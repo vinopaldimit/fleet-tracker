@@ -30,7 +30,7 @@ public class Truck {
 
 //	private String fedExAssignment;
 
-	private Collection<Trip> trips;
+	// private Collection<Trip> trips;
 
 //	private String company;
 
@@ -57,7 +57,7 @@ public class Truck {
 		this.vIn = vIn;
 		this.plateNumber = plateNumber;
 		this.actualRun = actualRun;
-		this.trips = trips;
+		// this.trips = trips;
 		this.milesTillService = milesTillService;
 		this.milesBetweenService = milesBetweenService;
 		this.dotInspectionDate = dotInspectionDate;
@@ -95,9 +95,9 @@ public class Truck {
 		return actualRun;
 	}
 
-	public Collection<Trip> getTrips() {
-		return trips;
-	}
+//	public Collection<Trip> getTrips() {
+//		return trips;
+//	}
 
 	public Long getMilesTillService() {
 		return milesTillService;
