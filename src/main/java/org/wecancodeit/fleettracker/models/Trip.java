@@ -11,43 +11,43 @@ public class Trip {
 	@GeneratedValue
 
 	private Long id;
-
+	//Number assigned by FedEx for trip from one hub to the next.
 	private Long tripNumber;
-
+	//Date truck arrives at final destination of trip.
 	private String date;
-
+	//FedEx number code for hub that truck leaves from. Sometimes but not always correlates to zip. For example, Grove City hub is 0432.
 	private Long origin;
-
+	//Same as above but it's the hub that truck is going to.
 	private Long destination;
-
+	//Zip code of hub.
 	private Long zipCode;
-
+	//Total miles from Origin to Destination.
 	private Float milesQuantity;
-
+	//Variable Mileage Rate. BASE $ rate paid per mile. Same from hub to hub.
 	private Float vMr;
-
+	//Mileage Plus- additional cents paid per mile. Varies from Hub to Hub.
 	private Float mileagePlus;
-
+	//$ amount. I've never seen it used, but since they might use it, we should at least have a field to accept it.
 	private Float premiums;
-
+	//Fuel Subsidy. FedEx pays X number of cents per mile to help with the cost of fuel.
 	private Float fuel;
-
+	//They do math on this, it's just the sum of the previous items. Total Rate = VMR + Mileage Plus + Premiums + Fuel.
 	private Float totalRate;
-
+	//AMT = $ amount paid for miles driven. AMT = Miles Quantity * Total Rate.
 	private Float aMt;
-
+	//I've never seen this used, but supposedly you can do an emergency run and they pay X dollars per package.
 	private int packages;
-
+	//Drop and Hook (D&H) is a flat rate paid to hook trailers up to a truck. It's paid every time they have to connect or disconnect trailers.
 	private Float dropAndHook;
-
+	//Some highways require paid tolls. This is a $ amount.
 	private Float tolls;
-
+	//This isn't often used, but on some runs they'll set a flat amount and pay that instead of calculating anything per mile.
 	private Float flatRate;
-
+	//Gross amount is $AMT + Drop and Hook.
 	private Float dailyGrossAmount;
-
+	//FedEx ID for first driver.
 	private Long driverOne;
-
+	//FedEx ID for second driver.
 	private Long driverTwo;
 
 	// employee
