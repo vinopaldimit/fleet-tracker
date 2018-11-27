@@ -1,4 +1,4 @@
-package org.wecancodeit.fleettracker.controllertest;
+package org.wecancodeit.fleettracker.controller;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -17,6 +17,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.wecancodeit.fleettracker.controller.ApiController;
+import org.wecancodeit.fleettracker.models.Trip;
 import org.wecancodeit.fleettracker.models.Truck;
 
 @RunWith(SpringRunner.class)
@@ -37,6 +39,16 @@ public class ApiControllerTest {
 		given(apiController.getTruck()).willReturn(trucks);
 		mvc.perform(get("/api/trucks").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].plateNumber", is(truck.getPlateNumber())));
+	}
+
+	@Test
+	public void shouldGetTrip() throws Exception {
+		Trip trip = new Trip();
+		Set<Trip> trips = Collections.singleton(trip);
+
+		given(apiController.getTrip()).willReturn(trips);
+		mvc.perform(get("/api/trips").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("$[0].tripNumber", is(trip.getTripNumber())));
 	}
 
 }

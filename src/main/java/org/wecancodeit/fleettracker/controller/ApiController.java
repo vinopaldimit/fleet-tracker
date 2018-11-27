@@ -1,4 +1,4 @@
-package org.wecancodeit.fleettracker.controllertest;
+package org.wecancodeit.fleettracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
