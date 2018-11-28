@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.wecancodeit.fleettracker.models.Truck;
 import org.wecancodeit.fleettracker.repositories.TripRepository;
 import org.wecancodeit.fleettracker.repositories.TruckRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ApiController {
