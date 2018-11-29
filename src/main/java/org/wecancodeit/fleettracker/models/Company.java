@@ -13,9 +13,11 @@ public class Company {
 	@GeneratedValue
 	private Long id;
 
-	private Collection<Employee> employees;
+	//private Collection<Employee> employees;
 
-	private Collection<Truck> trucks;
+	//private Collection<Truck> trucks;
+	
+	private String companyName;
 
 	private String entityId;
 
@@ -39,12 +41,13 @@ public class Company {
 
 	}
 
-	public Company(Collection<Employee> employees, Collection<Truck> trucks, String entityId, String stationNumber,
+	public Company(Collection<Employee> employees, Collection<Truck> trucks, String companyName, String entityId, String stationNumber,
 			String stationName, String contractId, String contractName, String authOfficerId, String authOfficerName,
 			String auaId, String address) {
 
-		this.employees = employees;
-		this.trucks = trucks;
+		//this.employees = employees;
+		//this.trucks = trucks;
+		this.companyName = companyName;
 		this.entityId = entityId;
 		this.stationNumber = stationNumber;
 		this.stationName = stationName;
@@ -60,12 +63,16 @@ public class Company {
 		return id;
 	}
 
-	public Collection<Employee> getEmployees() {
-		return employees;
-	}
-
-	public Collection<Truck> getTrucks() {
-		return trucks;
+//	public Collection<Employee> getEmployees() {
+//		return employees;
+//	}
+//
+//	public Collection<Truck> getTrucks() {
+//		return trucks;
+//	}
+	
+	public String getCompanyName() {
+		return companyName;
 	}
 
 	public String getEntityId() {
