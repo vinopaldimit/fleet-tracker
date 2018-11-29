@@ -1,5 +1,6 @@
 package org.wecancodeit.fleettracker.controller;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,7 +18,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.wecancodeit.fleettracker.controller.ApiController;
+import org.wecancodeit.fleettracker.models.Company;
+import org.wecancodeit.fleettracker.models.Employee;
 import org.wecancodeit.fleettracker.models.Trip;
 import org.wecancodeit.fleettracker.models.Truck;
 
@@ -36,7 +38,7 @@ public class ApiControllerTest {
 		Truck truck = new Truck();
 		Set<Truck> trucks = Collections.singleton(truck);
 
-		given(apiController.getTruck()).willReturn(trucks);
+		given(apiController.getTrucks()).willReturn(trucks);
 		mvc.perform(get("/api/trucks").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].plateNumber", is(truck.getPlateNumber())));
 	}
@@ -46,9 +48,31 @@ public class ApiControllerTest {
 		Trip trip = new Trip();
 		Set<Trip> trips = Collections.singleton(trip);
 
-		given(apiController.getTrip()).willReturn(trips);
+		given(apiController.getTrips()).willReturn(trips);
 		mvc.perform(get("/api/trips").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].tripNumber", is(trip.getTripNumber())));
+	}
+
+	@Test
+	public void shouldGetEmployee() throws Exception {
+		Employee employee = new Employee();
+		Set<Employee> employees = Collections.singleton(employee);
+
+		given(apiController.getEmployees()).willReturn(employees);
+		mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("$[0].fedexId", is(employee.getFedexId())));
+	}
+
+	@Test
+	public void shouldGetCompany() throws Exception {
+		Company company = new Company(null, null, "hello", "", "", "", "", "", "", "", "", "");
+		Set<Company> companies = Collections.singleton(company);
+
+		System.out.println(company.getAuthOfficerId());
+
+		given(apiController.getCompanies()).willReturn(companies);
+		mvc.perform(get("/api/companies").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("$[0].companyName", is(equalTo(company.getCompanyName()))));
 	}
 
 }

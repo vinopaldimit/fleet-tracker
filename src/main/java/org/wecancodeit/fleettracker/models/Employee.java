@@ -15,9 +15,9 @@ public class Employee {
 
 	private float miles;
 
-	private Collection<Company> companies;
+	//private Collection<Company> companies;
 
-	private Collection<Trip> trips;
+	//private Collection<Trip> trips;
 
 	private String ssn;
 
@@ -41,7 +41,7 @@ public class Employee {
 
 	private String address;
 
-	private Collection<String> accidents;
+	//private Collection<String> accidents;
 
 	private String email;
 
@@ -63,8 +63,8 @@ public class Employee {
 			String email, Float soloPayrate, Float teamPayrate, Float trainerPayrate, Float studentPayrate) {
 
 		this.miles = miles;
-		this.companies = companies;
-		this.trips = trips;
+		//this.companies = companies;
+		//this.trips = trips;
 		this.ssn = ssn;
 		this.fedexId = fedexId;
 		this.dateOfBirth = dateOfBirth;
@@ -76,7 +76,7 @@ public class Employee {
 		this.licenseExp = licenseExp;
 		this.dotPhysicalExp = dotPhysicalExp;
 		this.address = address;
-		this.accidents = accidents;
+		//this.accidents = accidents;
 		this.email = email;
 		this.soloPayrate = soloPayrate;
 		this.teamPayrate = teamPayrate;
@@ -92,13 +92,13 @@ public class Employee {
 		return miles;
 	}
 
-	public Collection<Company> getCompanies() {
-		return companies;
-	}
-
-	public Collection<Trip> getTrips() {
-		return trips;
-	}
+//	public Collection<Company> getCompanies() {
+//		return companies;
+//	}
+//
+//	public Collection<Trip> getTrips() {
+//		return trips;
+//	}
 
 	public String getSsn() {
 		return ssn;
@@ -144,9 +144,9 @@ public class Employee {
 		return address;
 	}
 
-	public Collection<String> getAccidents() {
-		return accidents;
-	}
+//	public Collection<String> getAccidents() {
+//		return accidents;
+//	}
 
 	public String getEmail() {
 		return email;
