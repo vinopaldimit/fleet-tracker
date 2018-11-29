@@ -149,8 +149,8 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 						50000F, "05/04/2018"),
 				new Truck(666666F, "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456", "Rialto", 300000F,
 						55000F, "07/08/2018"),
-				new Truck(420420F, "Freightliner", "Cascadia", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F,
-						45000F, "06/12/2018"),
+				new Truck(420420F, "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F, 45000F,
+						"06/12/2018"),
 				new Truck(123456F, "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto", 300000F,
 						55000F, "09/20/2018") }).forEach(this::saveTruckToRepo);
 
