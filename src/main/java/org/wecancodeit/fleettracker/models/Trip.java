@@ -1,8 +1,12 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Trip {
@@ -60,8 +64,12 @@ public class Trip {
 	private String driverTwo;
 
 	// employee
+	@ManyToMany
+	private Collection<Employee> employees;
 
 	// truck
+	@ManyToOne
+	private Truck truck;
 
 	public Trip() {
 
@@ -70,7 +78,7 @@ public class Trip {
 	public Trip(String date, Long tripNumber, Long origin, Long destination, Long zipCode, Float milesQuantity,
 			Float vMr, Float mileagePlus, Float premiums, Float fuel, Float totalRate, Float aMt, Long packages,
 			Long packageAmt, Float dropAndHook, Float tolls, Float flatRate, Float dailyGrossAmount, String driverOne,
-			String driverTwo) {
+			String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
 		this.date = date;
@@ -92,6 +100,7 @@ public class Trip {
 		this.dailyGrossAmount = dailyGrossAmount;
 		this.driverOne = driverOne;
 		this.driverTwo = driverTwo;
+		this.truck = truck;
 	}
 
 	public Long getId() {

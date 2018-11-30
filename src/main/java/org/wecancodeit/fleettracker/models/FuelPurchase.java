@@ -1,11 +1,15 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class FuelPurchases {
+public class FuelPurchase {
 
 	@Id
 	@GeneratedValue
@@ -23,11 +27,16 @@ public class FuelPurchases {
 	private Float authChgbkRefund;
 	private Float authChgbkNetAmt;
 
-	public FuelPurchases() {
+	@ManyToMany
+	private Collection<Company> companies = new HashSet<>();
+	@ManyToMany
+	private Collection<Truck> trucks = new HashSet<>();
+
+	public FuelPurchase() {
 
 	}
 
-	public FuelPurchases(String date, String ticketCheckNumber, String truckNumber, String truckStop, String city,
+	public FuelPurchase(String date, String ticketCheckNumber, String truckNumber, String truckStop, String city,
 			String state, Float gallonsQty, Float gallonsCost, Float authChgbkArrears, Float authChgbkRefund,
 			Float authChgbkNetAmt, Float repairMiscAmount) {
 		super();

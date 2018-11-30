@@ -80,14 +80,14 @@ public class ApiController {
 
 	}
 
-	@GetMapping("/companies")
-	public Iterable<FedExAssignment> getCompanies() {
-		return FedExAssignmentRepo.findAll();
+	@GetMapping("/fedexassignments")
+	public Iterable<FedExAssignment> getFedExAssignments() {
+		return assignmentRepo.findAll();
 	}
 
-	@GetMapping("/companies/{id}")
+	@GetMapping("/fedexassignments/{id}")
 	public FedExAssignment getFedExAssignment(@PathVariable(value = "id") Long id) {
-		return FedExAssignmentRepo.findById(id).get();
+		return assignmentRepo.findById(id).get();
 
 	}
 

@@ -1,10 +1,12 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Employee {
@@ -15,9 +17,11 @@ public class Employee {
 
 	private float miles;
 
-	//private Collection<Company> companies;
+	@ManyToMany
+	private Collection<Company> companies = new HashSet<>();
 
-	//private Collection<Trip> trips;
+	@ManyToMany
+	private Collection<Trip> trips = new HashSet<>();
 
 	private String ssn;
 
@@ -41,7 +45,7 @@ public class Employee {
 
 	private String address;
 
-	//private Collection<String> accidents;
+//	private Collection<String> accidents = new HashSet<>();
 
 	private String email;
 
@@ -57,14 +61,12 @@ public class Employee {
 
 	}
 
-	public Employee(float miles, Collection<Company> companies, Collection<Trip> trips, String ssn, String fedexId,
-			String dateOfBirth, String phoneNumber, String hireDate, String sixtyDays, String licenseNumber,
-			String licenseState, String licenseExp, String dotPhysicalExp, String address, Collection<String> accidents,
-			String email, Float soloPayrate, Float teamPayrate, Float trainerPayrate, Float studentPayrate) {
+	public Employee(float miles, String ssn, String fedexId, String dateOfBirth, String phoneNumber, String hireDate,
+			String sixtyDays, String licenseNumber, String licenseState, String licenseExp, String dotPhysicalExp,
+			String address, String email, Float soloPayrate, Float teamPayrate, Float trainerPayrate,
+			Float studentPayrate) {
 
 		this.miles = miles;
-		//this.companies = companies;
-		//this.trips = trips;
 		this.ssn = ssn;
 		this.fedexId = fedexId;
 		this.dateOfBirth = dateOfBirth;
@@ -76,7 +78,6 @@ public class Employee {
 		this.licenseExp = licenseExp;
 		this.dotPhysicalExp = dotPhysicalExp;
 		this.address = address;
-		//this.accidents = accidents;
 		this.email = email;
 		this.soloPayrate = soloPayrate;
 		this.teamPayrate = teamPayrate;
@@ -92,13 +93,13 @@ public class Employee {
 		return miles;
 	}
 
-//	public Collection<Company> getCompanies() {
-//		return companies;
-//	}
-//
-//	public Collection<Trip> getTrips() {
-//		return trips;
-//	}
+	public Collection<Company> getCompanies() {
+		return companies;
+	}
+
+	public Collection<Trip> getTrips() {
+		return trips;
+	}
 
 	public String getSsn() {
 		return ssn;

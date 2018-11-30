@@ -1,19 +1,26 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class FedExAssignment {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private Collection<FedExAssignment> companies;
-	private Long truckNumber;
-	private Collection<FedExAssignment> pastTruckNumbers;
+	@ManyToOne
+	private Company company;
+	@OneToOne
+	private Truck truck;
+	@ManyToMany
+	private Collection<Truck> pastTrucks = new HashSet<>();
 	private Float servicePercentage;
 	private Float availabilityPercentage;
 	private Long points;
@@ -25,16 +32,20 @@ public class FedExAssignment {
 	// Getters
 	// \/\/\/\/\/\/\/\/\/\
 
-	public Collection<FedExAssignment> getCompanies() {
-		return companies;
+	public Long getId() {
+		return id;
 	}
 
-	public Long getTruckNumber() {
-		return truckNumber;
+	public Company getCompany() {
+		return company;
 	}
 
-	public Collection<FedExAssignment> getPastTruckNumbers() {
-		return pastTruckNumbers;
+	public Truck getTruck() {
+		return truck;
+	}
+
+	public Collection<Truck> getPastTrucks() {
+		return pastTrucks;
 	}
 
 	public Float getServicePercentage() {
@@ -57,13 +68,10 @@ public class FedExAssignment {
 
 	}
 
-	public FedExAssignment(Collection<FedExAssignment> companies, Long truckNumber,
-			Collection<FedExAssignment> pastTruckNumbers, Float servicePercentage, Float availabilityPercentage,
+	public FedExAssignment(Company company, Truck truck, Float servicePercentage, Float availabilityPercentage,
 			Long points) {
-		super();
-		this.companies = companies;
-		this.truckNumber = truckNumber;
-		this.pastTruckNumbers = pastTruckNumbers;
+		this.company = company;
+		this.truck = truck;
 		this.servicePercentage = servicePercentage;
 		this.availabilityPercentage = availabilityPercentage;
 		this.points = points;

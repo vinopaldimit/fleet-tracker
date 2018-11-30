@@ -1,8 +1,16 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Truck {
@@ -13,7 +21,7 @@ public class Truck {
 	private Long id;
 	// Mileage is the total number of miles each truck has. The odometer reported
 	// miles.
-	private Float mileage;
+	private BigDecimal mileage;
 	// The manufacterer of the vehicle. For example, Freightliner, International,
 	// Peterbuilt.
 	private String make;
@@ -29,14 +37,19 @@ public class Truck {
 	// what the truck is supposed to phyiscally run daily. The "X" run, where "X" is
 	// string the user inputs..
 	private String actualRun;
-
-//	private String fedExAssignment;
-
-	// private Collection<Trip> trips;
-
-//	private String company;
-
-//	private Collection <pastFedExAssignments> fexExPastAss;
+	// truck number
+	private String truckNumber;
+	// FedEx Assignment
+	@OneToOne
+	private FedExAssignment fedExAssignment;
+	// trips truck has been on
+	@OneToMany(mappedBy = "truck")
+	private Collection<Trip> trips = new HashSet<Trip>();
+	// company
+	@ManyToOne
+	private Company company;
+	@ManyToMany
+	private Collection<FedExAssignment> fedExPastAssignments = new HashSet<>();
 	// Trucks get a service every X number of miles. This number should be the
 	// difference between the mileage at service and milesTillService
 	private Float milesAtService;
@@ -47,14 +60,16 @@ public class Truck {
 	// DOT inspection.
 	private String dotInspectionDate;
 
+	@ManyToMany
+	private Collection<FuelPurchase> fuelPurchase = new HashSet<>();
+
 	public Truck() {
 
 	}
 
-	public Truck(Float mileage, String make, String model, String year, String vIn, String plateNumber,
+	public Truck(String mileage, String make, String model, String year, String vIn, String plateNumber,
 			String actualRun, Float milesAtService, Float milesBetweenService, String dotInspectionDate) {
-		super();
-		this.mileage = mileage;
+		this.mileage = new BigDecimal(mileage);
 		this.make = make;
 		this.model = model;
 		this.year = year;
@@ -72,7 +87,7 @@ public class Truck {
 		return id;
 	}
 
-	public Float getMileage() {
+	public BigDecimal getMileage() {
 		return mileage;
 	}
 
@@ -100,9 +115,9 @@ public class Truck {
 		return actualRun;
 	}
 
-//	public Collection<Trip> getTrips() {
-//		return trips;
-//	}
+	public Collection<Trip> getTrips() {
+		return trips;
+	}
 
 	public Float getMilesTillService() {
 		return milesAtService;
