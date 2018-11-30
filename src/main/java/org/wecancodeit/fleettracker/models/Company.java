@@ -1,10 +1,13 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Company {
@@ -13,10 +16,15 @@ public class Company {
 	@GeneratedValue
 	private Long id;
 
-	//private Collection<Employee> employees;
+	@ManyToMany
+	private Collection<Employee> employees = new HashSet<>();
 
-	//private Collection<Truck> trucks;
-	
+	@OneToMany(mappedBy = "company")
+	private Collection<Truck> trucks = new HashSet<>();
+
+	@OneToMany(mappedBy = "company")
+	private Collection<FedExAssignment> fedExAssignments = new HashSet<>();
+
 	private String companyName;
 
 	private String entityId;
@@ -37,16 +45,16 @@ public class Company {
 
 	private String address;
 
+	@ManyToMany
+	private Collection<FuelPurchase> fuelPurchase = new HashSet<>();
+
 	public Company() {
 
 	}
 
-	public Company(Collection<Employee> employees, Collection<Truck> trucks, String companyName, String entityId, String stationNumber,
-			String stationName, String contractId, String contractName, String authOfficerId, String authOfficerName,
-			String auaId, String address) {
+	public Company(String companyName, String entityId, String stationNumber, String stationName, String contractId,
+			String contractName, String authOfficerId, String authOfficerName, String auaId, String address) {
 
-		//this.employees = employees;
-		//this.trucks = trucks;
 		this.companyName = companyName;
 		this.entityId = entityId;
 		this.stationNumber = stationNumber;
@@ -63,14 +71,14 @@ public class Company {
 		return id;
 	}
 
-//	public Collection<Employee> getEmployees() {
-//		return employees;
-//	}
-//
-//	public Collection<Truck> getTrucks() {
-//		return trucks;
-//	}
-	
+	public Collection<Employee> getEmployees() {
+		return employees;
+	}
+
+	public Collection<Truck> getTrucks() {
+		return trucks;
+	}
+
 	public String getCompanyName() {
 		return companyName;
 	}
