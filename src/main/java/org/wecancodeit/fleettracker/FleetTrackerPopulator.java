@@ -24,18 +24,18 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Truck truckOne = new Truck("500000", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123", "Rialto",
+		Truck truckOne = new Truck("123", "500000", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123", "Rialto",
 				400000F, 50000F, "05/04/2018");
-		Truck truckTwo = new Truck("666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456", "Rialto",
+		Truck truckTwo = new Truck("321", "666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456", "Rialto",
 				300000F, 55000F, "07/08/2018");
 
 //		Truck(Float , String , String , String , String , String , String , Long , Long , String )
 //		Truck( mileage,  make,  model,  year,  vIn,  ,  actualRun, milesAtService,  milesBetweenService,  dotInspectionDate)
 
 		createTruckList(new Truck[] { truckOne, truckTwo,
-				new Truck("420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F, 45000F,
+				new Truck("456", "420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F, 45000F,
 						"06/12/2018"),
-				new Truck("123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto", 300000F,
+				new Truck("654", "123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto", 300000F,
 						55000F, "09/20/2018") }).forEach(this::saveTruckToRepo);
 
 //		Trip(String, Long , Long , Long , Long , Float ,Float , Float , Float , Float , Float , Float , Long , Long, Float , Float , Float , Float , String , String 

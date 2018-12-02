@@ -65,7 +65,7 @@ public class ApiControllerTest {
 
 	@Test
 	public void shouldGetCompany() throws Exception {
-		Company company = new Company(null, null, "hello", "", "", "", "", "", "", "", "", "");
+		Company company = new Company("hello", "", "", "", "", "", "", "", "", "");
 		Set<Company> companies = Collections.singleton(company);
 
 		System.out.println(company.getAuthOfficerId());
