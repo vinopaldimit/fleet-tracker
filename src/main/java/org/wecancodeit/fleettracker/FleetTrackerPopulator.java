@@ -44,6 +44,7 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+
 //		Company(String , String , String , String , String , String , String , String , String , String )
 //		Company( companyName,  entityId,  stationNumber,  stationName,  contractId,  contractName,  authOfficerId,  authOfficerName,  auaId,  address)		
 
@@ -82,14 +83,17 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 				"Mitos Express, Inc.", "7513236", "Lois Brewster", "122832", "123 Paper St. Pickerington, Ohio");
 		Company companyTwo = new Company("Brewster Motor Express, Inc", "V0010338", "00432", "Columbus - HUB", "C12345",
 				"Brewster Motor Express", "7040238", "Steve Brewster", "123456", "123 Paper St. Pickerington, Ohio");
-		Truck truckOne = new Truck("500000", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123", "Rialto",
+
+		Truck truckOne = new Truck("123", "500000", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123", "Rialto",
+
 				400000F, 50000F, "05/04/2018");
-		Truck truckTwo = new Truck("666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456", "Rialto",
+		Truck truckTwo = new Truck("321", "666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456", "Rialto",
 				300000F, 55000F, "07/08/2018");
 
 		createFedExAssignment(new FedExAssignment[] { new FedExAssignment(companyOne, truckOne, 1.0F, 98.2F, 1324L),
 				new FedExAssignment(companyTwo, truckTwo, 1.0F, 98.2F, 1324L) })
 						.forEach(this::saveFedExAssignmentToRepo);
+
 
 //		FuelPurchase(String , String , String , String , String , String , Float , Float , Float , Float , Float , Float )
 //		FuelPurchase( date,  ticketCheckNumber,  truckNumber,  truckStop,  city,  state,  gallonsQty,  gallonsCost,  authChgbkArrears,  authChgbkRefund,  authChgbkNetAmt,  repairMiscAmount)
@@ -99,6 +103,16 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 						12F),
 				new FuelPurchase("11/03/2018", "12345", "136989", "Pilot Flying J", "Columbus", "Ohio", 368F, 1104F, 0F,
 						0F, 0F, 12F) }).forEach(this::saveFuelPurchaseToRepo);
+
+//		Truck(Float , String , String , String , String , String , String , Long , Long , String )
+//		Truck( mileage,  make,  model,  year,  vIn,  ,  actualRun, milesAtService,  milesBetweenService,  dotInspectionDate)
+  
+  createTruckList(new Truck[] { truckOne, truckTwo,
+				new Truck("456", "420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F, 45000F,
+						"06/12/2018"),
+				new Truck("654", "123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto", 300000F,
+						55000F, "09/20/2018") }).forEach(this::saveTruckToRepo);
+
 
 //		Trip(String, Long , Long , Long , Long , Float ,Float , Float , Float , Float , Float , Float , Long , Long, Float , Float , Float , Float , String , String 
 //		Trip( date,  tripNumber,  origin,  destination,  zipCode,  milesQuantity, vMr,  mileagePlus,  premiums,  fuel,  totalRate,  aMt,  packages, packagesAmt, dropAndHook,  tolls,  flatRate,  dailyGrossAmount,  driverOne,  driverTwo)	
@@ -111,14 +125,7 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 				new Trip("9-Nov-18", 118257154L, 5087L, 5431L, 8837L, 527F, 1.305F, 0.095F, 0F, 0.287F, 1.687F, 889.06F,
 						0L, 0L, 9F, 0F, 0F, 898.06F, "7297759", "", truckOne) }).forEach(this::saveTripToRepo);
 
-//		Truck(Float , String , String , String , String , String , String , Long , Long , String )
-//		Truck( mileage,  make,  model,  year,  vIn,  ,  actualRun, milesAtService,  milesBetweenService,  dotInspectionDate)
 
-		createTruckList(new Truck[] { truckOne, truckTwo,
-				new Truck("420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", 400000F, 45000F,
-						"06/12/2018"),
-				new Truck("123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto", 300000F,
-						55000F, "09/20/2018") }).forEach(this::saveTruckToRepo);
 
 	}
 
