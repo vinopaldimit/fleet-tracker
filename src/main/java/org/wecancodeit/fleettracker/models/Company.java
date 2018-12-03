@@ -25,8 +25,6 @@ public class Company {
 	@OneToMany(mappedBy = "company")
 	private Collection<FedExAssignment> fedExAssignments = new HashSet<>();
 
-	private String companyName;
-
 	private String entityId;
 
 	private String stationNumber;
@@ -52,10 +50,9 @@ public class Company {
 
 	}
 
-	public Company(String companyName, String entityId, String stationNumber, String stationName, String contractId,
-			String contractName, String authOfficerId, String authOfficerName, String auaId, String address) {
+	public Company(String entityId, String stationNumber, String stationName, String contractId, String contractName,
+			String authOfficerId, String authOfficerName, String auaId, String address) {
 
-		this.companyName = companyName;
 		this.entityId = entityId;
 		this.stationNumber = stationNumber;
 		this.stationName = stationName;
@@ -77,10 +74,6 @@ public class Company {
 
 	public Collection<Truck> getTrucks() {
 		return trucks;
-	}
-
-	public String getCompanyName() {
-		return companyName;
 	}
 
 	public String getEntityId() {
