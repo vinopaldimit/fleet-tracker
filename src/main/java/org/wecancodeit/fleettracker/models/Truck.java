@@ -67,8 +67,9 @@ public class Truck {
 
 	}
 
-	public Truck(String mileage, String make, String model, String year, String vIn, String plateNumber,
+	public Truck(String truckNumber, String mileage, String make, String model, String year, String vIn, String plateNumber,
 			String actualRun, Float milesAtService, Float milesBetweenService, String dotInspectionDate) {
+		this.truckNumber = truckNumber;
 		this.mileage = new BigDecimal(mileage);
 		this.make = make;
 		this.model = model;
@@ -83,6 +84,10 @@ public class Truck {
 	/////// This is how the calculations for miles until service will work.
 	// miles until service = milesBetweenService - (mileage - mileage at service)
 
+	public String getTruckNumber() {
+		return truckNumber;
+	}
+	
 	public Long getId() {
 		return id;
 	}
