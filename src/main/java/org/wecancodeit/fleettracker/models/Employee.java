@@ -23,6 +23,12 @@ public class Employee {
 	@ManyToMany
 	private Collection<Trip> trips = new HashSet<>();
 
+	private String fName;
+
+	private String mName;
+
+	private String lName;
+
 	private String ssn;
 
 	private String fedexId;
@@ -61,11 +67,14 @@ public class Employee {
 
 	}
 
-	public Employee(float miles, String ssn, String fedexId, String dateOfBirth, String phoneNumber, String hireDate,
-			String sixtyDays, String licenseNumber, String licenseState, String licenseExp, String dotPhysicalExp,
-			String address, String email, Float soloPayrate, Float teamPayrate, Float trainerPayrate,
-			Float studentPayrate) {
+	public Employee(String fName, String mName, String lName, float miles, String ssn, String fedexId,
+			String dateOfBirth, String phoneNumber, String hireDate, String sixtyDays, String licenseNumber,
+			String licenseState, String licenseExp, String dotPhysicalExp, String address, String email,
+			Float soloPayrate, Float teamPayrate, Float trainerPayrate, Float studentPayrate) {
 
+		this.fName = fName;
+		this.mName = mName;
+		this.lName = lName;
 		this.miles = miles;
 		this.ssn = ssn;
 		this.fedexId = fedexId;
@@ -87,6 +96,18 @@ public class Employee {
 
 	public long getId() {
 		return id;
+	}
+
+	public String getfName() {
+		return fName;
+	}
+
+	public String getmName() {
+		return mName;
+	}
+
+	public String getlName() {
+		return lName;
 	}
 
 	public float getMiles() {

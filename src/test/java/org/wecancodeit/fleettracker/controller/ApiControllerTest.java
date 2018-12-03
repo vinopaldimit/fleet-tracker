@@ -64,15 +64,15 @@ public class ApiControllerTest {
 	}
 
 	@Test
-	public void shouldGetCompany() throws Exception {
-		Company company = new Company("hello", "", "", "", "", "", "", "", "", "");
+	public void shouldGetEntityId() throws Exception {
+		Company company = new Company("", "", "", "", "", "", "", "", "");
 		Set<Company> companies = Collections.singleton(company);
 
 		System.out.println(company.getAuthOfficerId());
 
 		given(apiController.getCompanies()).willReturn(companies);
 		mvc.perform(get("/api/companies").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].companyName", is(equalTo(company.getCompanyName()))));
+				.andExpect(jsonPath("$[0].getEntityId", is(equalTo(company.getEntityId()))));
 	}
 
 }
