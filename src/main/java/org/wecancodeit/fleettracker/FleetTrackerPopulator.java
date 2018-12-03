@@ -56,10 +56,6 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		Employee(float , String , String , String , String , String ,String , String , String , String , String ,String , String , Float , Float , Float ,Float )
 //		Employee( miles,  ssn,  fedexId,  dateOfBirth,  phoneNumber,  hireDate, sixtyDays,  licenseNumber,  licenseState,  licenseExp,  dotPhysicalExp, address,  email,  soloPayrate,  teamPayrate,  trainerPayrate, studentPayrate)
 
-		/// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-		// We don't have employee name!
-		/// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
 		createEmployeeList(new Employee[] {
 				new Employee("John", "Peter", "Doe", 875000F, "270-55-5555", "7020234", "10-28-1922", "614-666-6666",
 						"10-01-2016", "12-24-2016", "RU636222", "Ohio", "10-28-2020", "10-01-2019", "420 Paper Street",
