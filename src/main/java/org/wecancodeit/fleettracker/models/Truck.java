@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ public class Truck {
 	private Long id;
 	// Mileage is the total number of miles each truck has. The odometer reported
 	// miles.
+	@Column(precision=10, scale=2)
 	private BigDecimal mileage;
 	// The manufacterer of the vehicle. For example, Freightliner, International,
 	// Peterbuilt.
@@ -34,7 +36,7 @@ public class Truck {
 	private String vIn;
 	// license plate number of truck.
 	private String plateNumber;
-	// what the truck is supposed to phyiscally run daily. The "X" run, where "X" is
+	// what the truck is supposed to physically run daily. The "X" run, where "X" is
 	// string the user inputs..
 	private String actualRun;
 	// truck number
@@ -52,10 +54,12 @@ public class Truck {
 	private Collection<FedExAssignment> fedExPastAssignments = new HashSet<>();
 	// Trucks get a service every X number of miles. This number should be the
 	// difference between the mileage at service and milesTillService
-	private Float milesAtService;
+	@Column(precision=10, scale=2)
+	private BigDecimal milesAtService;
 	// This value is the same for the life of a truck. For example, a 2012
 	// Freightliner Cascadia should have a service ever 50,000 miles
-	private Float milesBetweenService;
+	@Column(precision=10, scale=2)
+	private BigDecimal milesBetweenService;
 	// Every truck needs a DOT inspection annually. This should be the date of last
 	// DOT inspection.
 	private String dotInspectionDate;
@@ -68,7 +72,7 @@ public class Truck {
 	}
 
 	public Truck(String truckNumber, String mileage, String make, String model, String year, String vIn, String plateNumber,
-			String actualRun, Float milesAtService, Float milesBetweenService, String dotInspectionDate) {
+			String actualRun, String milesAtService, String milesBetweenService, String dotInspectionDate) {
 		this.truckNumber = truckNumber;
 		this.mileage = new BigDecimal(mileage);
 		this.make = make;
@@ -77,8 +81,8 @@ public class Truck {
 		this.vIn = vIn;
 		this.plateNumber = plateNumber;
 		this.actualRun = actualRun;
-		this.milesAtService = milesAtService;
-		this.milesBetweenService = milesBetweenService;
+		this.milesAtService = new BigDecimal(milesAtService);
+		this.milesBetweenService = new BigDecimal(milesBetweenService);
 		this.dotInspectionDate = dotInspectionDate;
 	}
 	/////// This is how the calculations for miles until service will work.
@@ -124,11 +128,11 @@ public class Truck {
 		return trips;
 	}
 
-	public Float getMilesTillService() {
+	public BigDecimal getMilesTillService() {
 		return milesAtService;
 	}
 
-	public Float getMilesBetweenService() {
+	public BigDecimal getMilesBetweenService() {
 		return milesBetweenService;
 	}
 

@@ -1,8 +1,10 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,12 +22,19 @@ public class FuelPurchase {
 	private String truckStop;
 	private String city;
 	private String state;
-	private Float gallonsQty;
+	@Column(precision=10, scale=4)
+	private BigDecimal gallonsQty;
 	// gallonsCost = PUR $AMT on settlement
-	private Float gallonsCost;
-	private Float authChgbkArrears;
-	private Float authChgbkRefund;
-	private Float authChgbkNetAmt;
+	@Column(precision=10, scale=4)
+	private BigDecimal gallonsCost;
+	@Column(precision=10, scale=4)
+	private BigDecimal authChgbkArrears;
+	@Column(precision=10, scale=4)
+	private BigDecimal authChgbkRefund;
+	@Column(precision=10, scale=4)
+	private BigDecimal authChgbkNetAmt;
+	@Column(precision=10, scale=4)
+	private BigDecimal repairMiscAmount;
 
 	@ManyToMany
 	private Collection<Company> companies = new HashSet<>();
@@ -37,21 +46,20 @@ public class FuelPurchase {
 	}
 
 	public FuelPurchase(String date, String ticketCheckNumber, String truckNumber, String truckStop, String city,
-			String state, Float gallonsQty, Float gallonsCost, Float authChgbkArrears, Float authChgbkRefund,
-			Float authChgbkNetAmt, Float repairMiscAmount) {
-		super();
+			String state, String gallonsQty, String gallonsCost, String authChgbkArrears, String authChgbkRefund,
+			String authChgbkNetAmt, String repairMiscAmount) {
 		this.date = date;
 		this.ticketCheckNumber = ticketCheckNumber;
 		this.truckNumber = truckNumber;
 		this.truckStop = truckStop;
 		this.city = city;
 		this.state = state;
-		this.gallonsQty = gallonsQty;
-		this.gallonsCost = gallonsCost;
-		this.authChgbkArrears = authChgbkArrears;
-		this.authChgbkRefund = authChgbkRefund;
-		this.authChgbkNetAmt = authChgbkNetAmt;
-		this.repairMiscAmount = repairMiscAmount;
+		this.gallonsQty = new BigDecimal(gallonsQty);
+		this.gallonsCost = new BigDecimal(gallonsCost);
+		this.authChgbkArrears = new BigDecimal(authChgbkArrears);
+		this.authChgbkRefund = new BigDecimal(authChgbkRefund);
+		this.authChgbkNetAmt = new BigDecimal(authChgbkNetAmt);
+		this.repairMiscAmount = new BigDecimal(repairMiscAmount);
 	}
 
 	public Long getId() {
@@ -82,30 +90,28 @@ public class FuelPurchase {
 		return state;
 	}
 
-	public Float getGallonsQty() {
+	public BigDecimal getGallonsQty() {
 		return gallonsQty;
 	}
 
-	public Float getGallonsCost() {
+	public BigDecimal getGallonsCost() {
 		return gallonsCost;
 	}
 
-	public Float getAuthChgbkArrears() {
+	public BigDecimal getAuthChgbkArrears() {
 		return authChgbkArrears;
 	}
 
-	public Float getAuthChgbkRefund() {
+	public BigDecimal getAuthChgbkRefund() {
 		return authChgbkRefund;
 	}
 
-	public Float getAuthChgbkNetAmt() {
+	public BigDecimal getAuthChgbkNetAmt() {
 		return authChgbkNetAmt;
 	}
 
-	public Float getRepairMiscAmount() {
+	public BigDecimal getRepairMiscAmount() {
 		return repairMiscAmount;
 	}
-
-	private Float repairMiscAmount;
 
 }
