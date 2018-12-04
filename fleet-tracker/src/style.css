@@ -1,0 +1,61 @@
+*{
+	font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+	--orange:  #FF750D;
+	--redOrange: #E83B0C;
+	--red: #FF0000;
+	--pink: #E80CAF;
+	--purple: #BC00FF;
+}
+
+button{
+	background-color: #fff;
+	border: solid 2px;
+	padding: 2px;
+	margin: 2px;
+	font-size: 1rem;
+}
+
+header{
+	width: 70%;
+	margin: auto;
+}
+
+h1{
+	font-family: "Montserrat", sans-serif;
+	text-align: center;
+	text-shadow: 4px 2px var(--orange);
+	margin-bottom: 5px;
+}
+
+h2{
+	font-family: "Merriweather", sans-serif;
+	text-decoration: underline var(--orange);
+	margin-bottom: 5px;
+}
+
+h3{
+	font-family: "Merriweather", sans-serif;
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+main{
+	width: 70%;
+	margin: auto;
+}
+
+nav{
+	text-align: center;
+}
+
+section{
+	border: solid;
+	margin: 1rem 0;
+	padding: 1rem;
+}

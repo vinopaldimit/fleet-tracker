@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Trucks from './components/Trucks';
 import Trips from './components/Trips';
 import Employees from './components/Employees';
@@ -100,42 +99,36 @@ class App extends Component {
 
         return (
             <div className="App">
-        <header>
-        </header>
-        <main>
-            <button className="trucks" onClick={this.setTrucks}>Trucks</button>
-            <button className="trips" onClick={this.setTrips}>Trips</button>
-            <button className="employees" onClick={this.setEmployees}>Employees</button>
-            <button className="fuelPurchases" onClick={this.setFuelPurchases}>Fuel Purchases</button>
-            <button className="fedExAssignments" onClick={this.setFedExAssignments}>FedEx Assignments</button>
-            <button className="companies" onClick={this.setCompanies}>Companies</button>
-            
-
-        
-            
-        <div>
-          {this.state.currentView === 'trucks'
-          ? <Trucks trucks={this.state.trucks} />
-          : this.state.currentView === 'trips'
-          ? <Trips trips={this.state.trips} />
-          : this.state.currentView === 'employees'
-          ? <Employees employees={this.state.employees} />
-          : this.state.currentView === 'fuelPurchases'
-          ? <FuelPurchases fuelPurchases={this.state.fuelPurchases} />
-          : this.state.currentView === 'fedExAssignments'
-          ? <FedExAssignments fedExAssignments={this.state.fedExAssignments} />
-          : this.state.currentView === 'companies'
-          ? <Companies companies={this.state.companies} />
-          : <h2>Choose your destiny</h2>}
-        
-        </div>
-
-
-
-
-
-        </main>
-      </div>
+                <header>
+                    <h1>Fleet Tracker</h1>
+                    <nav>
+                        <button className="trucks" onClick={this.setTrucks}>Trucks</button>
+                        <button className="trips" onClick={this.setTrips}>Trips</button>
+                        <button className="employees" onClick={this.setEmployees}>Employees</button>
+                        <button className="fuelPurchases" onClick={this.setFuelPurchases}>Fuel Purchases</button>
+                        <button className="fedExAssignments" onClick={this.setFedExAssignments}>FedEx Assignments</button>
+                        <button className="companies" onClick={this.setCompanies}>Companies</button>
+                    </nav>
+                </header>
+                <main>
+                    <div>
+                      {this.state.currentView === 'trucks'
+                      ? <Trucks trucks={this.state.trucks} />
+                      : this.state.currentView === 'trips'
+                      ? <Trips trips={this.state.trips} />
+                      : this.state.currentView === 'employees'
+                      ? <Employees employees={this.state.employees} />
+                      : this.state.currentView === 'fuelPurchases'
+                      ? <FuelPurchases fuelPurchases={this.state.fuelPurchases} />
+                      : this.state.currentView === 'fedExAssignments'
+                      ? <FedExAssignments fedExAssignments={this.state.fedExAssignments} />
+                      : this.state.currentView === 'companies'
+                      ? <Companies companies={this.state.companies} />
+                      : <h2></h2>}
+                    
+                    </div>
+                </main>
+            </div>
         );
     }
 }

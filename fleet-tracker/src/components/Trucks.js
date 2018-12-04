@@ -9,6 +9,7 @@ constructor (props) {
 
     render() {
         return (<div>
+                <h3>Trucks</h3>
                 {this.props.trucks.map((truck, index) =>
                     <section key={index}>
                         <h2>{truck.make}</h2>

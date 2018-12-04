@@ -9,6 +9,7 @@ constructor (props) {
 
     render() {
         return (<div>
+                <h3>Trips</h3>
                 {this.props.trips.map((trip, index) =>
                     <section key={index}>
                         <h2>{trip.tripNumber}</h2>
