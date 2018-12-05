@@ -98,11 +98,11 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		Trip( date,  tripNumber,  origin,  destination,  zipCode,  milesQuantity, vMr,  mileagePlus,  premiums,  fuel,  totalRate,  aMt,  packages, packagesAmt, dropAndHook,  tolls,  flatRate,  dailyGrossAmount,  driverOne,  driverTwo)	
 
 		createTripList(new Trip[] {
-				new Trip("9-Nov-18", 118221163L, 432L, 89L, 43123L, "528", "1.305", "0.095", "0", "0.287", "1.687", "890.74",
+				new Trip("9-Nov-18", "15-Nov-18", 118221163L, 432L, 89L, 43123L, "528", "1.305", "0.095", "0", "0.287", "1.687", "890.74",
 						0L, 0L, "13", "0", "0", "903.74", "7297759", "", truckTwo),
-				new Trip("9-Nov-18", 118256513L, 89L, 5087L, 8832L, "5", "2.816", "0.095", "0", "0.287", "3.198", "16", 0L, 0L,
+				new Trip("9-Nov-18", "15-Nov-18", 118256513L, 89L, 5087L, 8832L, "5", "2.816", "0.095", "0", "0.287", "3.198", "16", 0L, 0L,
 						"9", "0", "0", "25", "7297759", "", truckOne),
-				new Trip("9-Nov-18", 118257154L, 5087L, 5431L, 8837L, "527", "1.305", "0.095", "0", "0.287", "1.687", "889.06",
+				new Trip("9-Nov-18", "15-Nov-18", 118257154L, 5087L, 5431L, 8837L, "527", "1.305", "0.095", "0", "0.287", "1.687", "889.06",
 						0L, 0L, "9", "0", "0", "898.06", "7297759", "", truckOne) }).forEach(this::saveTripToRepo);
 
 	}

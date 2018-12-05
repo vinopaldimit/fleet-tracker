@@ -24,6 +24,9 @@ public class Trip {
 	// Date truck arrives at final destination of trip.
 	private String date;
 	
+	// Date of week ending
+	private String weekEnding;
+	
 	// FedEx number code for hub that truck leaves from. Sometimes but not always
 	// correlates to zip. For example, Grove City hub is 0432.
 	private Long origin;
@@ -103,18 +106,31 @@ public class Trip {
 	// truck
 	@ManyToOne
 	private Truck truck;
+	
+	// vmr + mileage plus + premiums + fuel
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedTotalRate;
+	
+	// milesQuantity + totalRate
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedAMT;
+	
+	// amt + dropAndHook
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedDailyGrossAmount;
 
 	public Trip() {
 
 	}
 
-	public Trip(String date, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
+	public Trip(String date, String weekEnding, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
 			String vMr, String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
 			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount, String driverOne,
 			String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
 		this.date = date;
+		this.weekEnding = weekEnding;
 		this.origin = origin;
 		this.destination = destination;
 		this.zipCode = zipCode;
@@ -134,6 +150,9 @@ public class Trip {
 		this.driverOne = driverOne;
 		this.driverTwo = driverTwo;
 		this.truck = truck;
+		this.calculatedTotalRate = this.vMr.add(this.mileagePlus).add(this.premiums).add(this.fuel);
+		this.calculatedAMT = this.milesQuantity.multiply(this.totalRate).setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.calculatedDailyGrossAmount = this.aMt.add(this.dropAndHook);
 	}
 
 	public Long getId() {
@@ -219,5 +238,22 @@ public class Trip {
 	public String getDriverTwo() {
 		return driverTwo;
 	}
+	
+	public BigDecimal getCalculatedTotalRate() {
+		return calculatedTotalRate;
+	}
+
+	public BigDecimal getCalculatedAMT() {
+		return calculatedAMT;
+	}
+
+	public BigDecimal getCalculatedDailyGrossAmount() {
+		return calculatedDailyGrossAmount;
+	}
+
+	public String getWeekEnding() {
+		return weekEnding;
+	}
+	
 
 }
