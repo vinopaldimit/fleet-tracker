@@ -57,11 +57,11 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		Employee( miles,  ssn,  fedexId,  dateOfBirth,  phoneNumber,  hireDate, sixtyDays,  licenseNumber,  licenseState,  licenseExp,  dotPhysicalExp, address,  email,  soloPayrate,  teamPayrate,  trainerPayrate, studentPayrate)
 
 		createEmployeeList(new Employee[] {
-				new Employee("John", "Peter", "Doe", "875000", "270-55-5555", "7020234", "10-28-1922", "614-666-6666",
-						"10-01-2016", "12-24-2016", "RU636222", "Ohio", "10-28-2020", "10-01-2019", "420 Paper Street",
+				new Employee("John", "Peter", "Doe", "875000", "270-55-5555", "7020234", 1922, 10, 28, "614-666-6666",
+						2016, 10, 1, "RU636222", "Ohio", 2020, 10, 28, 2019, 10, 1, "420 Paper Street",
 						"horseFan@ghosts.pizza", "0.56", "0.60", "0.65", "0.40"),
-				new Employee("Doug", "", "Hamsammich", "9925000", "310-55-5555", "702333", "01-01-91", "614-666-6666",
-						"10-01-2016", "12-24-2016", "RU636222", "Ohio", "10-28-2020", "05-04-2019",
+				new Employee("Doug", "", "Hamsammich", "9925000", "310-55-5555", "702333", 1991, 1, 1, "614-666-6666",
+						2016, 10, 1, "RU636222", "Ohio", 2020, 10, 28, 2019, 5, 4,
 						"1640 Riverside Drive, Hill Valley, California", "PeterBuiltGuy@trucker.net", "0.56", "0.60",
 						"0.65", "0.40") }).forEach(this::saveEmployeeToRepo);
 
@@ -69,14 +69,14 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		FedExAssignment( company,  truck,  servicePercentage,  availabilityPercentage, points)
 
 		Truck truckOne = new Truck("123", "500000.5492", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123",
-				"Rialto", "400000", "50000", "05/04/2018");
+				"Rialto", "400000", "50000", 2018, 5, 4);
 		Truck truckTwo = new Truck("321", "666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456",
-				"Rialto", "300000", "55000", "07/08/2018");
+				"Rialto", "300000", "55000", 2018, 7, 8);
 		createTruckList(new Truck[] { truckOne, truckTwo,
 				new Truck("456", "420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", "400000",
-						"45000", "06/12/2018"),
+						"45000", 2018, 6, 12),
 				new Truck("654", "123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto",
-						"300000", "55000", "09/20/2018") }).forEach(this::saveTruckToRepo);
+						"300000", "55000", 2018, 9, 20) }).forEach(this::saveTruckToRepo);
 
 		createFedExAssignment(new FedExAssignment[] { new FedExAssignment(companyOne, truckOne, "1.0", "98.2", 1324L),
 				new FedExAssignment(companyTwo, truckTwo, "1.0", "98.2", 1324L) })
@@ -86,9 +86,9 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		FuelPurchase( date,  ticketCheckNumber,  truckNumber,  truckStop,  city,  state,  gallonsQty,  gallonsCost,  authChgbkArrears,  authChgbkRefund,  authChgbkNetAmt,  repairMiscAmount)
 
 		createFuelPurchaseList(new FuelPurchase[] {
-				new FuelPurchase("12/15/2018", "6789", "136512", "BP", "Denver", "Colorado", "310", "999", "0", "0", "0",
+				new FuelPurchase(2018, 12, 15, "6789", "136512", "BP", "Denver", "Colorado", "310", "999", "0", "0", "0",
 						"12"),
-				new FuelPurchase("11/03/2018", "12345", "136989", "Pilot Flying J", "Columbus", "Ohio", "368", "1104", "0",
+				new FuelPurchase(2018, 11, 3, "12345", "136989", "Pilot Flying J", "Columbus", "Ohio", "368", "1104", "0",
 						"0", "0", "12") }).forEach(this::saveFuelPurchaseToRepo);
 
 //		Truck(Float , String , String , String , String , String , String , Long , Long , String )
@@ -98,11 +98,11 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		Trip( date,  tripNumber,  origin,  destination,  zipCode,  milesQuantity, vMr,  mileagePlus,  premiums,  fuel,  totalRate,  aMt,  packages, packagesAmt, dropAndHook,  tolls,  flatRate,  dailyGrossAmount,  driverOne,  driverTwo)	
 
 		createTripList(new Trip[] {
-				new Trip("9-Nov-18", 118221163L, 432L, 89L, 43123L, "528", "1.305", "0.095", "0", "0.287", "1.687", "890.74",
+				new Trip(2018, 11, 9, 2018, 11, 15, 118221163L, 432L, 89L, 43123L, "528", "1.305", "0.095", "0", "0.287", "1.687", "890.74",
 						0L, 0L, "13", "0", "0", "903.74", "7297759", "", truckTwo),
-				new Trip("9-Nov-18", 118256513L, 89L, 5087L, 8832L, "5", "2.816", "0.095", "0", "0.287", "3.198", "16", 0L, 0L,
+				new Trip(2018, 11, 9, 2018, 11, 15, 118256513L, 89L, 5087L, 8832L, "5", "2.816", "0.095", "0", "0.287", "3.198", "16", 0L, 0L,
 						"9", "0", "0", "25", "7297759", "", truckOne),
-				new Trip("9-Nov-18", 118257154L, 5087L, 5431L, 8837L, "527", "1.305", "0.095", "0", "0.287", "1.687", "889.06",
+				new Trip(2018, 11, 9, 2018, 11, 15, 118257154L, 5087L, 5431L, 8837L, "527", "1.305", "0.095", "0", "0.287", "1.687", "889.06",
 						0L, 0L, "9", "0", "0", "898.06", "7297759", "", truckOne) }).forEach(this::saveTripToRepo);
 
 	}

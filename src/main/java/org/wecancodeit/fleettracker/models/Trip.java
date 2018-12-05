@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -22,7 +23,10 @@ public class Trip {
 	private Long tripNumber;
 	
 	// Date truck arrives at final destination of trip.
-	private String date;
+	private LocalDate date;
+	
+	// Date of week ending
+	private LocalDate weekEnding;
 	
 	// FedEx number code for hub that truck leaves from. Sometimes but not always
 	// correlates to zip. For example, Grove City hub is 0432.
@@ -103,18 +107,31 @@ public class Trip {
 	// truck
 	@ManyToOne
 	private Truck truck;
+	
+	// vmr + mileage plus + premiums + fuel
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedTotalRate;
+	
+	// milesQuantity + totalRate
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedAMT;
+	
+	// amt + dropAndHook
+	@Column(precision=10, scale=4)
+	private BigDecimal calculatedDailyGrossAmount;
 
 	public Trip() {
 
 	}
 
-	public Trip(String date, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
+	public Trip(int dateYear, int dateMonth, int dateDay, int endingYear, int endingMonth, int endingDay, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
 			String vMr, String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
 			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount, String driverOne,
 			String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
-		this.date = date;
+		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
+		this.weekEnding = LocalDate.of(endingYear, endingMonth, endingDay);
 		this.origin = origin;
 		this.destination = destination;
 		this.zipCode = zipCode;
@@ -134,6 +151,9 @@ public class Trip {
 		this.driverOne = driverOne;
 		this.driverTwo = driverTwo;
 		this.truck = truck;
+		this.calculatedTotalRate = this.vMr.add(this.mileagePlus).add(this.premiums).add(this.fuel);
+		this.calculatedAMT = this.milesQuantity.multiply(this.totalRate).setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.calculatedDailyGrossAmount = this.aMt.add(this.dropAndHook);
 	}
 
 	public Long getId() {
@@ -144,7 +164,7 @@ public class Trip {
 		return tripNumber;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
@@ -219,5 +239,22 @@ public class Trip {
 	public String getDriverTwo() {
 		return driverTwo;
 	}
+	
+	public BigDecimal getCalculatedTotalRate() {
+		return calculatedTotalRate;
+	}
+
+	public BigDecimal getCalculatedAMT() {
+		return calculatedAMT;
+	}
+
+	public BigDecimal getCalculatedDailyGrossAmount() {
+		return calculatedDailyGrossAmount;
+	}
+
+	public LocalDate getWeekEnding() {
+		return weekEnding;
+	}
+	
 
 }
