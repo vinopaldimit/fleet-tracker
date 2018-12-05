@@ -1,8 +1,10 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +17,8 @@ public class Employee {
 	@GeneratedValue
 	private long id;
 
-	private float miles;
+	@Column(precision=10, scale=2)
+	private BigDecimal miles;
 
 	@ManyToMany
 	private Collection<Company> companies = new HashSet<>();
@@ -55,27 +58,31 @@ public class Employee {
 
 	private String email;
 
-	private Float soloPayrate;
+	@Column(precision=10, scale=4)
+	private BigDecimal soloPayrate;
 
-	private Float teamPayrate;
+	@Column(precision=10, scale=4)
+	private BigDecimal teamPayrate;
 
-	private Float trainerPayrate;
+	@Column(precision=10, scale=4)
+	private BigDecimal trainerPayrate;
 
-	private Float studentPayrate;
+	@Column(precision=10, scale=4)
+	private BigDecimal studentPayrate;
 
 	public Employee() {
 
 	}
 
-	public Employee(String fName, String mName, String lName, float miles, String ssn, String fedexId,
+	public Employee(String fName, String mName, String lName, String miles, String ssn, String fedexId,
 			String dateOfBirth, String phoneNumber, String hireDate, String sixtyDays, String licenseNumber,
 			String licenseState, String licenseExp, String dotPhysicalExp, String address, String email,
-			Float soloPayrate, Float teamPayrate, Float trainerPayrate, Float studentPayrate) {
+			String soloPayrate, String teamPayrate, String trainerPayrate, String studentPayrate) {
 
 		this.fName = fName;
 		this.mName = mName;
 		this.lName = lName;
-		this.miles = miles;
+		this.miles = new BigDecimal(miles);
 		this.ssn = ssn;
 		this.fedexId = fedexId;
 		this.dateOfBirth = dateOfBirth;
@@ -88,10 +95,10 @@ public class Employee {
 		this.dotPhysicalExp = dotPhysicalExp;
 		this.address = address;
 		this.email = email;
-		this.soloPayrate = soloPayrate;
-		this.teamPayrate = teamPayrate;
-		this.trainerPayrate = trainerPayrate;
-		this.studentPayrate = studentPayrate;
+		this.soloPayrate = new BigDecimal(soloPayrate);
+		this.teamPayrate = new BigDecimal(teamPayrate);
+		this.trainerPayrate = new BigDecimal(trainerPayrate);
+		this.studentPayrate = new BigDecimal(studentPayrate);
 	}
 
 	public long getId() {
@@ -110,7 +117,7 @@ public class Employee {
 		return lName;
 	}
 
-	public float getMiles() {
+	public BigDecimal getMiles() {
 		return miles;
 	}
 
@@ -174,19 +181,19 @@ public class Employee {
 		return email;
 	}
 
-	public Float getSoloPayrate() {
+	public BigDecimal getSoloPayrate() {
 		return soloPayrate;
 	}
 
-	public Float getTeamPayrate() {
+	public BigDecimal getTeamPayrate() {
 		return teamPayrate;
 	}
 
-	public Float getTrainerPayrate() {
+	public BigDecimal getTrainerPayrate() {
 		return trainerPayrate;
 	}
 
-	public Float getStudentPayrate() {
+	public BigDecimal getStudentPayrate() {
 		return studentPayrate;
 	}
 

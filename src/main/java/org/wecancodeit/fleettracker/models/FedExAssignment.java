@@ -1,8 +1,10 @@
 package org.wecancodeit.fleettracker.models;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,8 +23,10 @@ public class FedExAssignment {
 	private Truck truck;
 	@ManyToMany
 	private Collection<Truck> pastTrucks = new HashSet<>();
-	private Float servicePercentage;
-	private Float availabilityPercentage;
+	@Column(precision=10, scale=4)
+	private BigDecimal servicePercentage;
+	@Column(precision=10, scale=4)
+	private BigDecimal availabilityPercentage;
 	private Long points;
 
 	// declines remaining is calculated and not statically given.
@@ -48,11 +52,11 @@ public class FedExAssignment {
 		return pastTrucks;
 	}
 
-	public Float getServicePercentage() {
+	public BigDecimal getServicePercentage() {
 		return servicePercentage;
 	}
 
-	public Float getAvailabilityPercentage() {
+	public BigDecimal getAvailabilityPercentage() {
 		return availabilityPercentage;
 	}
 
@@ -68,12 +72,12 @@ public class FedExAssignment {
 
 	}
 
-	public FedExAssignment(Company company, Truck truck, Float servicePercentage, Float availabilityPercentage,
+	public FedExAssignment(Company company, Truck truck, String servicePercentage, String availabilityPercentage,
 			Long points) {
 		this.company = company;
 		this.truck = truck;
-		this.servicePercentage = servicePercentage;
-		this.availabilityPercentage = availabilityPercentage;
+		this.servicePercentage = new BigDecimal(servicePercentage);
+		this.availabilityPercentage = new BigDecimal(availabilityPercentage);
 		this.points = points;
 	}
 
