@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -16,7 +17,7 @@ public class FuelPurchase {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String date;
+	private LocalDate date;
 	private String ticketCheckNumber;
 	private String truckNumber;
 	private String truckStop;
@@ -45,10 +46,10 @@ public class FuelPurchase {
 
 	}
 
-	public FuelPurchase(String date, String ticketCheckNumber, String truckNumber, String truckStop, String city,
+	public FuelPurchase(int dateYear, int dateMonth, int dateDay, String ticketCheckNumber, String truckNumber, String truckStop, String city,
 			String state, String gallonsQty, String gallonsCost, String authChgbkArrears, String authChgbkRefund,
 			String authChgbkNetAmt, String repairMiscAmount) {
-		this.date = date;
+		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
 		this.ticketCheckNumber = ticketCheckNumber;
 		this.truckNumber = truckNumber;
 		this.truckStop = truckStop;
@@ -66,7 +67,7 @@ public class FuelPurchase {
 		return id;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 

@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -22,10 +23,10 @@ public class Trip {
 	private Long tripNumber;
 	
 	// Date truck arrives at final destination of trip.
-	private String date;
+	private LocalDate date;
 	
 	// Date of week ending
-	private String weekEnding;
+	private LocalDate weekEnding;
 	
 	// FedEx number code for hub that truck leaves from. Sometimes but not always
 	// correlates to zip. For example, Grove City hub is 0432.
@@ -123,14 +124,14 @@ public class Trip {
 
 	}
 
-	public Trip(String date, String weekEnding, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
+	public Trip(int dateYear, int dateMonth, int dateDay, int endingYear, int endingMonth, int endingDay, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
 			String vMr, String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
 			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount, String driverOne,
 			String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
-		this.date = date;
-		this.weekEnding = weekEnding;
+		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
+		this.weekEnding = LocalDate.of(endingYear, endingMonth, endingDay);
 		this.origin = origin;
 		this.destination = destination;
 		this.zipCode = zipCode;
@@ -163,7 +164,7 @@ public class Trip {
 		return tripNumber;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
@@ -251,7 +252,7 @@ public class Trip {
 		return calculatedDailyGrossAmount;
 	}
 
-	public String getWeekEnding() {
+	public LocalDate getWeekEnding() {
 		return weekEnding;
 	}
 	
