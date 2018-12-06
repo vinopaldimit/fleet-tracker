@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Truck {
 
@@ -46,6 +48,7 @@ public class Truck {
 	@OneToOne
 	private FedExAssignment fedExAssignment;
 	// trips truck has been on
+	@JsonIgnore
 	@OneToMany(mappedBy = "truck")
 	private Collection<Trip> trips = new HashSet<Trip>();
 	// company

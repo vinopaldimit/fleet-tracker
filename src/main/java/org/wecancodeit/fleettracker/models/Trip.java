@@ -18,85 +18,85 @@ public class Trip {
 	@GeneratedValue
 
 	private Long id;
-	
+
 	// Number assigned by FedEx for trip from one hub to the next.
 	private Long tripNumber;
-	
+
 	// Date truck arrives at final destination of trip.
 	private LocalDate date;
-	
+
 	// Date of week ending
 	private LocalDate weekEnding;
-	
+
 	// FedEx number code for hub that truck leaves from. Sometimes but not always
 	// correlates to zip. For example, Grove City hub is 0432.
 	private Long origin;
-	
+
 	// Same as above but it's the hub that truck is going to.
 	private Long destination;
-	
+
 	// Zip code of hub.
 	private Long zipCode;
-	
+
 	// Total miles from Origin to Destination.
-	@Column(precision=10, scale=2)
+	@Column(precision = 10, scale = 2)
 	private BigDecimal milesQuantity;
-	
+
 	// Variable Mileage Rate. BASE $ rate paid per mile. Same from hub to hub.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal vMr;
-	
+
 	// Mileage Plus- additional cents paid per mile. Varies from Hub to Hub.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal mileagePlus;
-	
+
 	// $ amount. I've never seen it used, but since they might use it, we should at
 	// least have a field to accept it.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal premiums;
-	
+
 	// Fuel Subsidy. FedEx pays X number of cents per mile to help with the cost of
 	// fuel.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal fuel;
-	
+
 	// They do math on this, it's just the sum of the previous items. Total Rate =
 	// VMR + Mileage Plus + Premiums + Fuel.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal totalRate;
-	
+
 	// AMT = $ amount paid for miles driven. AMT = Miles Quantity * Total Rate.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal aMt;
-	
+
 	// I've never seen this used, but supposedly you can do an emergency run and
 	// they pay X dollars per package.
 	private Long packages;
-	
+
 	// packages $amount
 	private Long packageAmt;
-	
+
 	// Drop and Hook (D&H) is a flat rate paid to hook trailers up to a truck. It's
 	// paid every time they have to connect or disconnect trailers.\
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal dropAndHook;
-	
+
 	// Some highways require paid tolls. This is a $ amount.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal tolls;
-	
+
 	// This isn't often used, but on some runs they'll set a flat amount and pay
 	// that instead of calculating anything per mile.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal flatRate;
-	
+
 	// Gross amount is $AMT + Drop and Hook.
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal dailyGrossAmount;
-	
+
 	// FedEx ID for first driver.
 	private String driverOne;
-	
+
 	// FedEx ID for second driver.
 	private String driverTwo;
 
@@ -107,27 +107,28 @@ public class Trip {
 	// truck
 	@ManyToOne
 	private Truck truck;
-	
+
 	// vmr + mileage plus + premiums + fuel
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal calculatedTotalRate;
-	
+
 	// milesQuantity + totalRate
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal calculatedAMT;
-	
+
 	// amt + dropAndHook
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal calculatedDailyGrossAmount;
 
 	public Trip() {
 
 	}
 
-	public Trip(int dateYear, int dateMonth, int dateDay, int endingYear, int endingMonth, int endingDay, Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity,
-			String vMr, String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
-			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount, String driverOne,
-			String driverTwo, Truck truck) {
+	public Trip(int dateYear, int dateMonth, int dateDay, int endingYear, int endingMonth, int endingDay,
+			Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity, String vMr,
+			String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
+			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount,
+			String driverOne, String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
 		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
@@ -239,7 +240,7 @@ public class Trip {
 	public String getDriverTwo() {
 		return driverTwo;
 	}
-	
+
 	public BigDecimal getCalculatedTotalRate() {
 		return calculatedTotalRate;
 	}
@@ -256,5 +257,8 @@ public class Trip {
 		return weekEnding;
 	}
 	
+	public Truck getTruck() {
+		return truck;
+	}
 
 }
