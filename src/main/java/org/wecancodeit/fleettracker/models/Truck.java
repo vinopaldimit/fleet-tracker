@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -12,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Truck {
@@ -45,6 +48,7 @@ public class Truck {
 	@OneToOne
 	private FedExAssignment fedExAssignment;
 	// trips truck has been on
+	@JsonIgnore
 	@OneToMany(mappedBy = "truck")
 	private Collection<Trip> trips = new HashSet<Trip>();
 	// company
@@ -62,7 +66,7 @@ public class Truck {
 	private BigDecimal milesBetweenService;
 	// Every truck needs a DOT inspection annually. This should be the date of last
 	// DOT inspection.
-	private String dotInspectionDate;
+	private LocalDate dotInspectionDate;
 
 	@ManyToMany
 	private Collection<FuelPurchase> fuelPurchase = new HashSet<>();
@@ -72,7 +76,7 @@ public class Truck {
 	}
 
 	public Truck(String truckNumber, String mileage, String make, String model, String year, String vIn, String plateNumber,
-			String actualRun, String milesAtService, String milesBetweenService, String dotInspectionDate) {
+			String actualRun, String milesAtService, String milesBetweenService, int dotYear, int dotMonth, int dotDay) {
 		this.truckNumber = truckNumber;
 		this.mileage = new BigDecimal(mileage);
 		this.make = make;
@@ -83,7 +87,7 @@ public class Truck {
 		this.actualRun = actualRun;
 		this.milesAtService = new BigDecimal(milesAtService);
 		this.milesBetweenService = new BigDecimal(milesBetweenService);
-		this.dotInspectionDate = dotInspectionDate;
+		this.dotInspectionDate = LocalDate.of(dotYear, dotMonth, dotDay);
 	}
 	/////// This is how the calculations for miles until service will work.
 	// miles until service = milesBetweenService - (mileage - mileage at service)
@@ -136,7 +140,7 @@ public class Truck {
 		return milesBetweenService;
 	}
 
-	public String getDotInspectionDate() {
+	public LocalDate getDotInspectionDate() {
 		return dotInspectionDate;
 	}
 

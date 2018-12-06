@@ -1,6 +1,7 @@
 package org.wecancodeit.fleettracker.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -17,7 +18,7 @@ public class Employee {
 	@GeneratedValue
 	private long id;
 
-	@Column(precision=10, scale=2)
+	@Column(precision = 10, scale = 2)
 	private BigDecimal miles;
 
 	@ManyToMany
@@ -36,21 +37,19 @@ public class Employee {
 
 	private String fedexId;
 
-	private String dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	private String phoneNumber;
 
-	private String hireDate;
-
-	private String sixtyDays;
+	private LocalDate hireDate;
 
 	private String licenseNumber;
 
 	private String licenseState;
 
-	private String licenseExp;
+	private LocalDate licenseExp;
 
-	private String dotPhysicalExp;
+	private LocalDate dotPhysicalExp;
 
 	private String address;
 
@@ -58,26 +57,27 @@ public class Employee {
 
 	private String email;
 
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal soloPayrate;
 
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal teamPayrate;
 
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal trainerPayrate;
 
-	@Column(precision=10, scale=4)
+	@Column(precision = 10, scale = 4)
 	private BigDecimal studentPayrate;
 
 	public Employee() {
 
 	}
 
-	public Employee(String fName, String mName, String lName, String miles, String ssn, String fedexId,
-			String dateOfBirth, String phoneNumber, String hireDate, String sixtyDays, String licenseNumber,
-			String licenseState, String licenseExp, String dotPhysicalExp, String address, String email,
-			String soloPayrate, String teamPayrate, String trainerPayrate, String studentPayrate) {
+	public Employee(String fName, String mName, String lName, String miles, String ssn, String fedexId, int dobYear,
+			int dobMonth, int dobDay, String phoneNumber, int hireYear, int hireMonth, int hireDay,
+			String licenseNumber, String licenseState, int licenseExpYear, int licenseExpMonth, int licenseExpDay,
+			int dotExpYear, int dotExpMonth, int dotExpDay, String address, String email, String soloPayrate,
+			String teamPayrate, String trainerPayrate, String studentPayrate) {
 
 		this.fName = fName;
 		this.mName = mName;
@@ -85,14 +85,13 @@ public class Employee {
 		this.miles = new BigDecimal(miles);
 		this.ssn = ssn;
 		this.fedexId = fedexId;
-		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirth = LocalDate.of(dobYear, dobMonth, dobDay);
 		this.phoneNumber = phoneNumber;
-		this.hireDate = hireDate;
-		this.sixtyDays = sixtyDays;
+		this.hireDate = LocalDate.of(hireYear, hireMonth, hireDay);
 		this.licenseNumber = licenseNumber;
 		this.licenseState = licenseState;
-		this.licenseExp = licenseExp;
-		this.dotPhysicalExp = dotPhysicalExp;
+		this.licenseExp = LocalDate.of(licenseExpYear, licenseExpMonth, licenseExpDay);
+		this.dotPhysicalExp = LocalDate.of(dotExpYear, dotExpMonth, dotExpDay);
 		this.address = address;
 		this.email = email;
 		this.soloPayrate = new BigDecimal(soloPayrate);
@@ -137,7 +136,7 @@ public class Employee {
 		return fedexId;
 	}
 
-	public String getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -145,12 +144,8 @@ public class Employee {
 		return phoneNumber;
 	}
 
-	public String getHireDate() {
+	public LocalDate getHireDate() {
 		return hireDate;
-	}
-
-	public String getSixtyDays() {
-		return sixtyDays;
 	}
 
 	public String getLicenseNumber() {
@@ -161,11 +156,11 @@ public class Employee {
 		return licenseState;
 	}
 
-	public String getLicenseExp() {
+	public LocalDate getLicenseExp() {
 		return licenseExp;
 	}
 
-	public String getDotPhysicalExp() {
+	public LocalDate getDotPhysicalExp() {
 		return dotPhysicalExp;
 	}
 
@@ -196,5 +191,7 @@ public class Employee {
 	public BigDecimal getStudentPayrate() {
 		return studentPayrate;
 	}
+	
+	
 
 }

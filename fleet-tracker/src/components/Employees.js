@@ -12,10 +12,22 @@ constructor (props) {
                 <h3>Employees</h3>
                 {this.props.employees.map((employee, index) =>
                     <section key={index}>
-                        <h2>First Name: {employee.fName}</h2>
-                        <p>Middle Name: {employee.mName}</p>
-                        <p>Last Name: {employee.lName}</p>
+
+                        <h2>{employee.lName}, {employee.fName} {employee.mName}</h2>
                         <p>Miles: {employee.miles}</p>
+                        <p>{employee.ssn}</p>
+                        <p>{employee.fedexId}</p>
+                        <p>{employee.dateOfBirth}</p>
+                        <p>{employee.phoneNumber}</p>
+                        <p>{employee.hireDate}</p>
+                        <p>{employee.licenseNumber}</p>
+                        <p>{employee.licenseState}</p>
+                        <p>{employee.Exp}</p>
+                        <p>{employee.dotPhysicalExp}</p>
+                        <p>{employee.address}</p>
+                        <p>{employee.email}</p>
+                        <p>{employee.miles}</p>
+
                     </section>
                 )}
             </div>);

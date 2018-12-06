@@ -18,6 +18,7 @@ constructor (props) {
                         <p>Service Percentage: {fedExAssignment.servicePercentage}</p>
                         <p>Availablity Percentage: {fedExAssignment.availabilityPercentage}</p>
                         <p>Points: {fedExAssignment.points}</p>
+
                     </section>
                 )}
             </div>);
