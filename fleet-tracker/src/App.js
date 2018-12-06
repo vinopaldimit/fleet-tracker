@@ -5,7 +5,11 @@ import Employees from './components/Employees';
 import FuelPurchases from './components/FuelPurchases';
 import FedExAssignments from './components/FedExAssignments';
 import Companies from './components/Companies';
-
+import BarChartComponent from './components/BarChartComponent';
+import HorizontalBarChartComponent from './components/HorizontalBarChartComponent';
+import PieChartComponent from './components/PieChartComponent';
+import LineChartComponent from './components/LineChartComponent';
+import './layout.css';
 class App extends Component {
     constructor() {
         super()
@@ -125,7 +129,24 @@ class App extends Component {
                       : this.state.currentView === 'companies'
                       ? <Companies companies={this.state.companies} />
                       : <h2></h2>}
-                    
+                       <section className="wrapper">
+                          <figure className="box a">
+                          <h1>BarChart</h1>
+                            <BarChartComponent />
+                          </figure>
+                          <figure className="box b">  
+                          <h1>PieChart</h1>
+                            <PieChartComponent />
+                          </figure>
+                           <figure className="box c"> 
+                          <h1>LineChart</h1>
+                            <LineChartComponent />
+                          </figure>  
+                          <figure className="box d">  
+                           <h1>Horizontal BarChart</h1>
+                            <HorizontalBarChartComponent />
+                          </figure> 
+                      </section> 
                     </div>
                 </main>
             </div>
