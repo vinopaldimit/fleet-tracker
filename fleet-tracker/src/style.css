@@ -1,27 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
 *{
 	font-family: "Roboto", sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: #333333;
 }
 
 :root {
+	--maroon: #4d0000;
 	--orange:  #FF750D;
 	--redOrange: #E83B0C;
 	--red: #FF0000;
 	--pink: #E80CAF;
 	--purple: #BC00FF;
+	--darkWhite : #d9d9d9;
+	--black : #1a1a1a;
 }
 
+
+
+
 button{
-	background-color: #fff;
+	background-color: var(--maroon) ;  
 	border: solid 2px;
-	padding: 2px;
-	margin: 2px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 3rem;
 	font-size: 1rem;
+	border-radius: 20px;
+	border-color: var(--black);
+	color: var(--darkWhite);
+}
+
+button:hover{
+	border-color: white;
+	color: var(--darkWhite);
+}
+
+.theme{
+	width: 5%;
+	background-color: var(--darkWhite);
+	color: var(--black);
 }
 
 header{
+	
 	width: 70%;
 	margin: auto;
 }
@@ -29,20 +56,29 @@ header{
 h1{
 	font-family: "Montserrat", sans-serif;
 	text-align: center;
-	text-shadow: 4px 2px var(--orange);
+	/*text-shadow: 3px 1px var(--maroon);*/
+	margin-top: 5px;
 	margin-bottom: 5px;
+	color: var(--darkWhite);
+	font-size: 2.5rem;
+	/*background-color: var(--darkWhite);*/
 }
 
 h2{
-	font-family: "Merriweather", sans-serif;
-	text-decoration: underline var(--orange);
+	font-family: 'Archivo Black', sans-serif;
+	/*font-family: "Merriweather", sans-serif;*/
+	text-decoration: underline var(--maroon);
 	margin-bottom: 5px;
+	color: var(--darkWhite);
+
 }
 
 h3{
 	font-family: "Merriweather", sans-serif;
 	margin: 10px 0 0 0;
 	text-align: center;
+	color: white;
+	font-size: 1.5rem;
 }
 
 main{
@@ -56,6 +92,21 @@ nav{
 
 section{
 	border: solid;
+	border-color: var(--darkWhite);
 	margin: 1rem 0;
 	padding: 1rem;
+	border-radius: 17px;
+
+
 }
+
+.wrapper{
+	background-color: white;
+	height: auto;
+
+}
+p{
+	color: var(--darkWhite);
+}
+
+

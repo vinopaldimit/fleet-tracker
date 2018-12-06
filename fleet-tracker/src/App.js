@@ -99,19 +99,33 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header>
-                    <h1>Fleet Tracker</h1>
+                <button className="theme">Theme</button>
+                    <header>
+                  
+                    <h1>Fleetrix</h1>
+                    
+                    </header>
+                    
+
                     <nav>
+                        <div className="menu" onclick="myFunction(this)">
+                         <div className="bar1"></div>
+                         <div className="bar2"></div>
+                         <div className="bar3"></div>
+                        </div>
+
                         <button className="trucks" onClick={this.setTrucks}>Trucks</button>
                         <button className="trips" onClick={this.setTrips}>Trips</button>
                         <button className="employees" onClick={this.setEmployees}>Employees</button>
                         <button className="fuelPurchases" onClick={this.setFuelPurchases}>Fuel Purchases</button>
                         <button className="fedExAssignments" onClick={this.setFedExAssignments}>FedEx Assignments</button>
                         <button className="companies" onClick={this.setCompanies}>Companies</button>
+                        
                     </nav>
-                </header>
+                
+
                 <main>
-                    <div>
+                     <div className="wrapper">
                       {this.state.currentView === 'trucks'
                       ? <Trucks trucks={this.state.trucks} />
                       : this.state.currentView === 'trips'
@@ -128,7 +142,9 @@ class App extends Component {
                     
                     </div>
                 </main>
+
             </div>
+
         );
     }
 }

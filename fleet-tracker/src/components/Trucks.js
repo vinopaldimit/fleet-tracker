@@ -12,15 +12,15 @@ constructor (props) {
                 <h3>Trucks</h3>
                 {this.props.trucks.map((truck, index) =>
                     <section key={index}>
-                        <h2>{truck.make}</h2>
-                        <p>{truck.model}</p>
-                        <p>{truck.year}</p>
-                        <p>{truck.vIn}</p>
-                        <p>{truck.plateNumber}</p>
-                        <p>{truck.actualRun}</p>
-                        <p>{truck.milesBetweenService}</p>
-                        <p>{truck.dotInspectionDate}</p>
-                        <p>{truck.milesTillService}</p>
+                        <h2>Make: {truck.make}</h2>
+                        <p>Model: {truck.model}</p>
+                        <p>Year: {truck.year}</p>
+                        <p>Vin number: {truck.vIn}</p>
+                        <p>Plate Number: {truck.plateNumber}</p>
+                        <p>Actual Run: {truck.actualRun}</p>
+                        <p>Miles Between Service: {truck.milesBetweenService}</p>
+                        <p>Inspection Date: {truck.dotInspectionDate}</p>
+                        <p>Miles Till Service: {truck.milesTillService}</p>
                     </section>
                 )}
             </div>);

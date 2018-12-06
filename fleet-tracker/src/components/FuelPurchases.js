@@ -12,10 +12,10 @@ constructor (props) {
                 <h3>Fuel Purchases</h3>
                 {this.props.fuelPurchases.map((fuelPurchase, index) =>
                     <section key={index}>
-                        <h2>{fuelPurchase.date}</h2>
-                        <p>{fuelPurchase.ticketCheckNumber}</p>
-                        <p>{fuelPurchase.truckNumber}</p>
-                        <p>{fuelPurchase.truckStop}</p>
+                        <h2>Purchase Date: {fuelPurchase.date}</h2>
+                        <p>Ticket Check Number: {fuelPurchase.ticketCheckNumber}</p>
+                        <p>Truck Number: {fuelPurchase.truckNumber}</p>
+                        <p>Truck Stop: {fuelPurchase.truckStop}</p>
                     </section>
                 )}
             </div>);
