@@ -5,7 +5,14 @@ import Employees from './components/Employees';
 import FuelPurchases from './components/FuelPurchases';
 import FedExAssignments from './components/FedExAssignments';
 import Companies from './components/Companies';
+
 import Calculations from './components/Calculations';
+
+
+import BarChartComponent from './components/BarChartComponent';
+import HorizontalBarChartComponent from './components/HorizontalBarChartComponent';
+import PieChartComponent from './components/PieChartComponent';
+import LineChartComponent from './components/LineChartComponent';
 
 class App extends Component {
     constructor() {
@@ -227,7 +234,24 @@ class App extends Component {
                         countTotalDailyGrossAmount={this.countTotalDailyGrossAmount}
                         countUniqueTrucks={this.countUniqueTrucks}/>
                       : <h2></h2>}
-                    
+                       <section className="wrapper">
+                          <figure className="box a">
+                          <h1>BarChart</h1>
+                            <BarChartComponent />
+                          </figure>
+                          <figure className="box b">  
+                          <h1>PieChart</h1>
+                            <PieChartComponent />
+                          </figure>
+                           <figure className="box c"> 
+                          <h1>LineChart</h1>
+                            <LineChartComponent />
+                          </figure>  
+                          <figure className="box d">  
+                           <h1>Horizontal BarChart</h1>
+                            <HorizontalBarChartComponent />
+                          </figure> 
+                      </section> 
                     </div>
                 </main>
             </div>
