@@ -1,3 +1,30 @@
+
+/*Mobile First stuff*/
+@media screen and (min-width: 300px) {
+	button {
+		width: 70%;
+	}
+
+	.theme{
+		width: 25%;
+
+	}
+
+	.clearfix::after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+}
+
+@media screen and (min-width: 750px) {
+	button {
+		width: 10.5%
+	}
+	.theme{
+		width: 5%;
+	}
+=======
 body {
   margin: 40px;
   box-sizing: border-box;

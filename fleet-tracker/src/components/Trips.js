@@ -12,26 +12,26 @@ constructor (props) {
                 <h3>Trips</h3>
                 {this.props.trips.map((trip, index) =>
                     <section key={index}>
-                        <h2>{trip.tripNumber}</h2>
-                        <p>{trip.date}</p>
-                        <p>{trip.origin}</p>
-                        <p>{trip.destination}</p>
-                        <p>{trip.zipCode}</p>
-                        <p>{trip.milesQuantity}</p>
-                        <p>{trip.vMr}</p>
-                        <p>{trip.mileagePlus}</p>
-                        <p>{trip.premiums}</p>
-                        <p>{trip.fuel}</p>
-                        <p>{trip.totalRate}</p>
-                        <p>{trip.aMt}</p>
-                        <p>{trip.packages}</p>
-                        <p>{trip.packageAmt}</p>
-                        <p>{trip.dropAndHook}</p>
-                        <p>{trip.tolls}</p>
-                        <p>{trip.flatRate}</p>
-                        <p>{trip.dailyGrossAmount}</p>
-                        <p>{trip.driverOne}</p>
-                        <p>{trip.driverTwo}</p>
+                        <h2>Trip Number: {trip.tripNumber}</h2>
+                        <p>Trip Date: {trip.date}</p>
+                        <p>Trip Origin{trip.origin}</p>
+                        <p>Trip  Destination{trip.destination}</p>
+                        <p>Zip: {trip.zipCode}</p>
+                        <p>Miles Quantity: {trip.milesQuantity}</p>
+                        <p>VMR: {trip.vMr}</p>
+                        <p>Milage: {trip.mileagePlus}</p>
+                        <p>Premiums: {trip.premiums}</p>
+                        <p>Fuel: {trip.fuel}</p>
+                        <p>Total Rate: {trip.totalRate}</p>
+                        <p>AMT: {trip.aMt}</p>
+                        <p>Packages: {trip.packages}</p>
+                        <p>Package AMT: {trip.packageAmt}</p>
+                        <p>Drop and Hook: {trip.dropAndHook}</p>
+                        <p>Tolls: {trip.tolls}</p>
+                        <p>Flat Rate: {trip.flatRate}</p>
+                        <p>Daily Gross Ammount{trip.dailyGrossAmount}</p>
+                        <p>Driver One: {trip.driverOne}</p>
+                        <p>Driver Two: {trip.driverTwo}</p>
 
                     </section>
                 )}

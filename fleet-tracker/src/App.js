@@ -197,9 +197,21 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header>
-                    <h1>Fleet Tracker</h1>
+                <button className="theme">Theme</button>
+                    <header>
+                  
+                    <h1>Fleetrix</h1>
+                    
+                    </header>
+                    
+
                     <nav>
+                        <div className="menu" onclick="myFunction(this)">
+                         <div className="bar1"></div>
+                         <div className="bar2"></div>
+                         <div className="bar3"></div>
+                        </div>
+
                         <button className="trucks" onClick={this.setTrucks}>Trucks</button>
                         <button className="trips" onClick={this.setTrips}>Trips</button>
                         <button className="employees" onClick={this.setEmployees}>Employees</button>
@@ -208,9 +220,10 @@ class App extends Component {
                         <button className="companies" onClick={this.setCompanies}>Companies</button>
                         <button className="calculations" onClick={this.setCalculations}>Calculations</button>
                     </nav>
-                </header>
+                
+
                 <main>
-                    <div>
+                     <div className="wrapper">
                       {this.state.currentView === 'trucks'
                       ? <Trucks trucks={this.state.trucks} />
                       : this.state.currentView === 'trips'
@@ -254,7 +267,9 @@ class App extends Component {
                       </section> 
                     </div>
                 </main>
+
             </div>
+
         );
     }
 }

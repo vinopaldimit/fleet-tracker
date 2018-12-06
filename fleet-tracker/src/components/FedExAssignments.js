@@ -12,11 +12,13 @@ constructor (props) {
                 <h3>FedEx Assignments</h3>
                 {this.props.fedExAssignments.map((fedExAssignment, index) =>
                     <section key={index}>
-                        <h2>{fedExAssignment.company.contractName}</h2>
-                        <p>{fedExAssignment.truck.truckNumber}</p> 
-                        <p>{fedExAssignment.servicePercentage}</p>
-                        <p>{fedExAssignment.availabilityPercentage}</p>
-                        <p>{fedExAssignment.points}</p>
+                        <h2>Contract Name: {fedExAssignment.company.contractName}</h2>
+                        <p>Truck Number: {fedExAssignment.truck.truckNumber}</p>
+                        
+                        <p>Service Percentage: {fedExAssignment.servicePercentage}</p>
+                        <p>Availablity Percentage: {fedExAssignment.availabilityPercentage}</p>
+                        <p>Points: {fedExAssignment.points}</p>
+
                     </section>
                 )}
             </div>);

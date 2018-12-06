@@ -12,7 +12,9 @@ constructor (props) {
                 <h3>Employees</h3>
                 {this.props.employees.map((employee, index) =>
                     <section key={index}>
+
                         <h2>{employee.lName}, {employee.fName} {employee.mName}</h2>
+                        <p>Miles: {employee.miles}</p>
                         <p>{employee.ssn}</p>
                         <p>{employee.fedexId}</p>
                         <p>{employee.dateOfBirth}</p>
@@ -25,6 +27,7 @@ constructor (props) {
                         <p>{employee.address}</p>
                         <p>{employee.email}</p>
                         <p>{employee.miles}</p>
+
                     </section>
                 )}
             </div>);

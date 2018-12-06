@@ -13,14 +13,14 @@ constructor (props) {
                 {this.props.companies.map((company, index) =>
                     <section key={index}>
                         <h2>{company.entityId}</h2>
-                        <p>{company.stationNumber}</p>
-                        <p>{company.stationName}</p>
-                        <p>{company.contractId}</p>
-                        <p>{company.contractName}</p>
-                        <p>{company.authOfficerId}</p>
-                        <p>{company.authOfficerName}</p>
-                        <p>{company.auaId}</p>
-                        <p>{company.address}</p>
+                        <p>Station Number: {company.stationNumber}</p>
+                        <p>Station Name: {company.stationName}</p>
+                        <p>Contract ID: {company.contractId}</p>
+                        <p>Contract Name: {company.contractName}</p>
+                        <p>Officer ID: {company.authOfficerId}</p>
+                        <p>Officer Name: {company.authOfficerName}</p>
+                        <p>ID: {company.auaId}</p>
+                        <p>Address: {company.address}</p>
                     </section>
                 )}
             </div>);
