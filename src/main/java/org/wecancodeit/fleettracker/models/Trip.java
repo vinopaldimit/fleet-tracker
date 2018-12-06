@@ -124,15 +124,14 @@ public class Trip {
 
 	}
 
-	public Trip(int dateYear, int dateMonth, int dateDay, int endingYear, int endingMonth, int endingDay,
-			Long tripNumber, Long origin, Long destination, Long zipCode, String milesQuantity, String vMr,
-			String mileagePlus, String premiums, String fuel, String totalRate, String aMt, Long packages,
-			Long packageAmt, String dropAndHook, String tolls, String flatRate, String dailyGrossAmount,
-			String driverOne, String driverTwo, Truck truck) {
+	public Trip(int dateYear, int dateMonth, int dateDay, Long tripNumber, Long origin, Long destination, Long zipCode,
+			String milesQuantity, String vMr, String mileagePlus, String premiums, String fuel, String totalRate,
+			String aMt, Long packages, Long packageAmt, String dropAndHook, String tolls, String flatRate,
+			String dailyGrossAmount, String driverOne, String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
 		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
-		this.weekEnding = LocalDate.of(endingYear, endingMonth, endingDay);
+		this.weekEnding = calculateWeekEnding(this.date);
 		this.origin = origin;
 		this.destination = destination;
 		this.zipCode = zipCode;
@@ -256,9 +255,51 @@ public class Trip {
 	public LocalDate getWeekEnding() {
 		return weekEnding;
 	}
-	
+
 	public Truck getTruck() {
 		return truck;
+	}
+
+	// other methods
+
+	public LocalDate calculateWeekEnding(LocalDate date) {
+		String day = date.getDayOfWeek().name();
+		int daysAdded = 0;
+		switch(day){
+		case "MONDAY":
+			daysAdded = 4;
+			break;
+		case "TUESDAY": 
+			daysAdded = 3;
+			break;
+		case "WEDNESDAY": 
+			daysAdded = 2;
+			break;
+		case "THURSDAY": 
+			daysAdded = 1;
+			break;
+		case "FRIDAY": 
+			break;
+		case "SATURDAY": 
+			daysAdded = 6;
+			break;
+		case "SUNDAY": 
+			daysAdded = 5;
+			break;
+		default:
+			return LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth());
+		}
+		
+		int monthLength = date.getMonth().length(date.isLeapYear());
+		
+		if(date.getDayOfMonth() + daysAdded >= monthLength) {
+			if(date.getMonthValue()==12) {
+				return LocalDate.of(date.getYear(), 1, (date.getDayOfMonth() + daysAdded) - monthLength);
+			}
+			return LocalDate.of(date.getYear(), date.getMonthValue() + 1, (date.getDayOfMonth() + daysAdded) - monthLength);
+		}
+		
+		return LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth() + daysAdded);
 	}
 
 }
