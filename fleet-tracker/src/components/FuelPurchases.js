@@ -16,6 +16,15 @@ constructor (props) {
                         <p>{fuelPurchase.ticketCheckNumber}</p>
                         <p>{fuelPurchase.truckNumber}</p>
                         <p>{fuelPurchase.truckStop}</p>
+                        <p>{fuelPurchase.city}</p>
+                        <p>{fuelPurchase.state}</p>
+                        <p>{fuelPurchase.gallonsQty}</p>
+                        <p>{fuelPurchase.gallonsCost}</p>
+                        <p>{fuelPurchase.authChgbkArrears}</p>
+                        <p>{fuelPurchase.authChgbkRefund}</p>
+                        <p>{fuelPurchase.authChgbkNetAmt}</p>
+                        <p>{fuelPurchase.repairMiscAmount}</p>
+                        <p>{fuelPurchase.truckNumber}</p>
                     </section>
                 )}
             </div>);
