@@ -13,8 +13,7 @@ constructor (props) {
                 {this.props.fedExAssignments.map((fedExAssignment, index) =>
                     <section key={index}>
                         <h2>{fedExAssignment.company.contractName}</h2>
-                        <p>{fedExAssignment.truck.truckNumber}</p>
-                        
+                        <p>{fedExAssignment.truck.truckNumber}</p> 
                         <p>{fedExAssignment.servicePercentage}</p>
                         <p>{fedExAssignment.availabilityPercentage}</p>
                         <p>{fedExAssignment.points}</p>
