@@ -9,18 +9,30 @@ constructor (props) {
 
     render() {
         return (<div>
-                <h3>FedEx Assignments</h3>
-                {this.props.fedExAssignments.map((fedExAssignment, index) =>
-                    <section key={index}>
-                        <h2>Contract Name: {fedExAssignment.company.contractName}</h2>
-                        <p>Truck Number: {fedExAssignment.truck.truckNumber}</p>
-                        
-                        <p>Service Percentage: {fedExAssignment.servicePercentage}</p>
-                        <p>Availablity Percentage: {fedExAssignment.availabilityPercentage}</p>
-                        <p>Points: {fedExAssignment.points}</p>
+                <h3>Assignments</h3>
 
-                    </section>
-                )}
+                <table>
+
+                    <tr>
+                        <th>Contract Name</th>
+                        <th>Truck #</th>
+                        <th>Service %</th>
+                        <th>Availability %</th>
+                        <th>Points</th>
+                    </tr>
+
+                    {this.props.fedExAssignments.map((fedExAssignment, index) =>
+                        <tr key={index}>
+                            <td>{fedExAssignment.company.contractName}</td>
+                            <td>{fedExAssignment.truck.truckNumber}</td>
+                            <td>{fedExAssignment.servicePercentage}</td>
+                            <td>{fedExAssignment.availabilityPercentage}</td>
+                            <td>{fedExAssignment.points}</td>
+
+                        </tr>
+                    )}
+
+                </table>
             </div>);
     }
 }

@@ -10,31 +10,59 @@ constructor (props) {
     render() {
         return (<div>
                 <h3>Trips</h3>
-                {this.props.trips.map((trip, index) =>
-                    <section key={index}>
-                        <h2>Trip Number: {trip.tripNumber}</h2>
-                        <p>Trip Date: {trip.date}</p>
-                        <p>Trip Origin{trip.origin}</p>
-                        <p>Trip  Destination{trip.destination}</p>
-                        <p>Zip: {trip.zipCode}</p>
-                        <p>Miles Quantity: {trip.milesQuantity}</p>
-                        <p>VMR: {trip.vMr}</p>
-                        <p>Milage: {trip.mileagePlus}</p>
-                        <p>Premiums: {trip.premiums}</p>
-                        <p>Fuel: {trip.fuel}</p>
-                        <p>Total Rate: {trip.totalRate}</p>
-                        <p>AMT: {trip.aMt}</p>
-                        <p>Packages: {trip.packages}</p>
-                        <p>Package AMT: {trip.packageAmt}</p>
-                        <p>Drop and Hook: {trip.dropAndHook}</p>
-                        <p>Tolls: {trip.tolls}</p>
-                        <p>Flat Rate: {trip.flatRate}</p>
-                        <p>Daily Gross Ammount{trip.dailyGrossAmount}</p>
-                        <p>Driver One: {trip.driverOne}</p>
-                        <p>Driver Two: {trip.driverTwo}</p>
 
-                    </section>
+                <table>
+                    <tr>
+                        <th>Truck #</th>
+                        <th>Trip #</th>
+                        <th>Date</th>
+                        <th>Orig.</th>
+                        <th>Dest.</th>
+                        <th>Zip</th>
+                        <th>Miles QTY</th>
+                        <th>VMR</th>
+                        <th>Mileage</th>
+                        <th>Premiums</th>
+                        <th>Fuel</th>
+                        <th>Total Rate</th>
+                        <th>AMT</th>
+                        <th>Packages</th>
+                        <th>Package AMT</th>
+                        <th>D & H</th>
+                        <th>Tolls</th>
+                        <th>Flat Rate</th>
+                        <th>Daily Gross AMT</th>
+                        <th>Driver One</th>
+                        <th>Driver Two</th>
+                    </tr>
+
+                {this.props.trips.map((trip, index) =>
+                    <tr key={index}>
+                        <td>{trip.truck.truckNumber}</td>
+                        <td>{trip.tripNumber}</td>
+                        <td>{trip.date}</td>
+                        <td>{trip.origin}</td>
+                        <td>{trip.destination}</td>
+                        <td>{trip.zipCode}</td>
+                        <td>{trip.milesQuantity}</td>
+                        <td>{trip.vMr}</td>
+                        <td>{trip.mileagePlus}</td>
+                        <td>{trip.premiums}</td>
+                        <td>{trip.fuel}</td>
+                        <td>{trip.totalRate}</td>
+                        <td>{trip.aMt}</td>
+                        <td>{trip.packages}</td>
+                        <td>{trip.packageAmt}</td>
+                        <td>{trip.dropAndHook}</td>
+                        <td>{trip.tolls}</td>
+                        <td>{trip.flatRate}</td>
+                        <td>{trip.dailyGrossAmount}</td>
+                        <td>{trip.driverOne}</td>
+                        <td>{trip.driverTwo}</td>
+                    </tr>
+
                 )}
+                </table>
             </div>);
     }
 }
