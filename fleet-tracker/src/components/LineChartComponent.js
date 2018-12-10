@@ -58,7 +58,8 @@ export default class LineChartComponent extends Component
  render()
    {
       return(
-        <div>
+        <div className="chart">
+        <h1>LineChart</h1>
           <Line
             // height = {240}
             // width = {240}
