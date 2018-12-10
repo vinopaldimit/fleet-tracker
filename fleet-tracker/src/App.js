@@ -216,14 +216,13 @@ class App extends Component {
                         <button className="trips" onClick={this.setTrips}>Trips</button>
                         <button className="employees" onClick={this.setEmployees}>Employees</button>
                         <button className="fuelPurchases" onClick={this.setFuelPurchases}>Fuel Purchases</button>
-                        <button className="fedExAssignments" onClick={this.setFedExAssignments}>FedEx Assignments</button>
+                        <button className="fedExAssignments" onClick={this.setFedExAssignments}>Assignments</button>
                         <button className="companies" onClick={this.setCompanies}>Companies</button>
                         <button className="calculations" onClick={this.setCalculations}>Calculations</button>
                     </nav>
                 
 
                 <main>
-                     <div className="wrapper">
                       {this.state.currentView === 'trucks'
                       ? <Trucks trucks={this.state.trucks} />
                       : this.state.currentView === 'trips'
@@ -265,7 +264,6 @@ class App extends Component {
                             <HorizontalBarChartComponent />
                           </figure> 
                       </section> 
-                    </div>
                 </main>
 
             </div>

@@ -10,26 +10,44 @@ constructor (props) {
     render() {
         return (<div>
                 <h3>Employees</h3>
-                {this.props.employees.map((employee, index) =>
-                    <section key={index}>
 
-                        <h2>{employee.lName}, {employee.fName} {employee.mName}</h2>
-                        <p>Miles: {employee.miles}</p>
-                        <p>{employee.ssn}</p>
-                        <p>{employee.fedexId}</p>
-                        <p>{employee.dateOfBirth}</p>
-                        <p>{employee.phoneNumber}</p>
-                        <p>{employee.hireDate}</p>
-                        <p>{employee.licenseNumber}</p>
-                        <p>{employee.licenseState}</p>
-                        <p>{employee.Exp}</p>
-                        <p>{employee.dotPhysicalExp}</p>
-                        <p>{employee.address}</p>
-                        <p>{employee.email}</p>
-                        <p>{employee.miles}</p>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Miles</th>
+                        <th>SSN</th>
+                        <th>Fedex Id</th>
+                        <th>DOB</th>
+                        <th>Phone #</th>
+                        <th>Hire Date</th>
+                        <th>License #</th>
+                        <th>License State</th>
+                        <th>License Exp.</th>
+                        <th>DOT Physical Exp.</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                    </tr>
 
-                    </section>
-                )}
+                    {this.props.employees.map((employee, index) =>
+                        <tr key={index}>
+
+                            <td>{employee.lName}, {employee.fName} {employee.mName}</td>
+                            <td>{employee.miles}</td>
+                            <td>{employee.ssn}</td>
+                            <td>{employee.fedexId}</td>
+                            <td>{employee.dateOfBirth}</td>
+                            <td>{employee.phoneNumber}</td>
+                            <td>{employee.hireDate}</td>
+                            <td>{employee.licenseNumber}</td>
+                            <td>{employee.licenseState}</td>
+                            <td>{employee.licenseExp}</td>
+                            <td>{employee.dotPhysicalExp}</td>
+                            <td>{employee.address}</td>
+                            <td>{employee.email}</td>
+
+                        </tr>
+                    )}
+                </table>
             </div>);
     }
 }

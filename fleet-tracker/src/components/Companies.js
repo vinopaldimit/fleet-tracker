@@ -10,19 +10,35 @@ constructor (props) {
     render() {
         return (<div>
                 <h3>Companies</h3>
-                {this.props.companies.map((company, index) =>
-                    <section key={index}>
-                        <h2>{company.entityId}</h2>
-                        <p>Station Number: {company.stationNumber}</p>
-                        <p>Station Name: {company.stationName}</p>
-                        <p>Contract ID: {company.contractId}</p>
-                        <p>Contract Name: {company.contractName}</p>
-                        <p>Officer ID: {company.authOfficerId}</p>
-                        <p>Officer Name: {company.authOfficerName}</p>
-                        <p>ID: {company.auaId}</p>
-                        <p>Address: {company.address}</p>
-                    </section>
-                )}
+
+                <table>
+
+                    <tr>
+                        <th>Contract Name</th>
+                        <th>Contract ID</th>
+                        <th>Entity ID</th>
+                        <th>Station #</th>
+                        <th>Station Name</th>
+                        <th>Officer ID</th>
+                        <th>Officer Name</th>
+                        <th>AUA ID</th>
+                        <th>Address</th>
+                    </tr>
+
+                    {this.props.companies.map((company, index) =>
+                        <tr key={index}>
+                            <td>{company.contractName}</td>
+                            <td>{company.contractId}</td>
+                            <td>{company.entityId}</td>
+                            <td>{company.stationNumber}</td>
+                            <td>{company.stationName}</td>
+                            <td>{company.authOfficerId}</td>
+                            <td>{company.authOfficerName}</td>
+                            <td>{company.auaId}</td>
+                            <td>{company.address}</td>
+                        </tr>
+                    )}
+                </table>
             </div>);
     }
 }

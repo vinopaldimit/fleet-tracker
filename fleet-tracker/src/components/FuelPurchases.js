@@ -10,24 +10,41 @@ constructor (props) {
     render() {
         return (<div>
                 <h3>Fuel Purchases</h3>
-                {this.props.fuelPurchases.map((fuelPurchase, index) =>
-                    <section key={index}>
 
-                        <h2>Purchase Date: {fuelPurchase.date}</h2>
-                        <p>Ticket Check Number: {fuelPurchase.ticketCheckNumber}</p>
-                        <p>Truck Number: {fuelPurchase.truckNumber}</p>
-                        <p>Truck Stop: {fuelPurchase.truckStop}</p>
-                        <p>{fuelPurchase.city}</p>
-                        <p>{fuelPurchase.state}</p>
-                        <p>{fuelPurchase.gallonsQty}</p>
-                        <p>{fuelPurchase.gallonsCost}</p>
-                        <p>{fuelPurchase.authChgbkArrears}</p>
-                        <p>{fuelPurchase.authChgbkRefund}</p>
-                        <p>{fuelPurchase.authChgbkNetAmt}</p>
-                        <p>{fuelPurchase.repairMiscAmount}</p>
-                        <p>{fuelPurchase.truckNumber}</p>
-                    </section>
-                )}
+                <table>
+                    <tr>
+                        <th>Purchase Date</th>
+                        <th>Ticket Check #</th>
+                        <th>Truck #</th>
+                        <th>Truck Stop</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Gallons QTY</th>
+                        <th>Gallons Cost</th>
+                        <th>Auth Chgbk Arrears</th>
+                        <th>Auth Chgbk Refund</th>
+                        <th>Auth Chgbk Net AMT</th>
+                        <th>Repair Misc. AMT</th>
+                    </tr>
+
+                    {this.props.fuelPurchases.map((fuelPurchase, index) =>
+                        <tr key={index}>
+
+                            <td>{fuelPurchase.date}</td>
+                            <td>{fuelPurchase.ticketCheckNumber}</td>
+                            <td>{fuelPurchase.truckNumber}</td>
+                            <td>{fuelPurchase.truckStop}</td>
+                            <td>{fuelPurchase.city}</td>
+                            <td>{fuelPurchase.state}</td>
+                            <td>{fuelPurchase.gallonsQty}</td>
+                            <td>{fuelPurchase.gallonsCost}</td>
+                            <td>{fuelPurchase.authChgbkArrears}</td>
+                            <td>{fuelPurchase.authChgbkRefund}</td>
+                            <td>{fuelPurchase.authChgbkNetAmt}</td>
+                            <td>{fuelPurchase.repairMiscAmount}</td>
+                        </tr>
+                    )}
+                </table>
             </div>);
     }
 }

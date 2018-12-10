@@ -20,15 +20,17 @@
 }
 
 
-
+body {
+	width: 90%;
+	margin: auto;
+  /*margin: 40px;
+  box-sizing: border-box;*/
+}
 
 button{
 	background-color: var(--maroon) ;  
 	border: solid 2px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 5px 15px;
 	margin: 3rem;
 	font-size: 1rem;
 	border-radius: 20px;
@@ -39,18 +41,6 @@ button{
 button:hover{
 	border-color: white;
 	color: var(--darkWhite);
-}
-
-.theme{
-	width: 5%;
-	background-color: var(--darkWhite);
-	color: var(--black);
-}
-
-header{
-	
-	width: 70%;
-	margin: auto;
 }
 
 h1{
@@ -81,32 +71,44 @@ h3{
 	font-size: 1.5rem;
 }
 
-main{
-	width: 70%;
-	margin: auto;
+h4{
+	color: white;
+	text-align: center;
 }
 
 nav{
 	text-align: center;
 }
 
-section{
-	border: solid;
-	border-color: var(--darkWhite);
-	margin: 1rem 0;
-	padding: 1rem;
-	border-radius: 17px;
-
-
-}
-
-.wrapper{
-	background-color: white;
-	height: auto;
-
-}
 p{
 	color: var(--darkWhite);
 }
 
+section{
+	border: solid var(--darkWhite);
+	margin: 1rem 0;
+	/*padding: 1rem;
+	border-radius: 17px;*/
+}
 
+.box {
+  
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.theme{
+	width: 5%;
+	background-color: var(--darkWhite);
+	color: var(--black);
+}
+
+table{
+	border: solid var(--darkWhite);
+	color: white;
+	text-align: left;
+	width: 100%;
+}
