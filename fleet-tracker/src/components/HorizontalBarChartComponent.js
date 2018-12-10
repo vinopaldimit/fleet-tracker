@@ -58,7 +58,8 @@ export default class HorizontalBarChartComponent extends Component
  render()
    {
       return(
-        <div>
+        <div className="chart">
+        <h1>Horizontal BarChart</h1>
           <HorizontalBar
             // height = {240}
             // width = {240}

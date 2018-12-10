@@ -58,7 +58,8 @@ export default class PieChartComponent extends Component
  render()
    {
       return(
-        <div>
+        <div className="chart">
+        <h1>PieChart</h1>
           <Pie
             // height = {240}
             // width = {240}

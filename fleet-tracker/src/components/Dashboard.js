@@ -12,22 +12,21 @@ constructor (props) {
 
 
     render() {
-        return (<div>
+        return (<div className="chartDash">
                 <section className="wrapper">
                           <figure className="box a">
-                          <h1>BarChart</h1>
                             <BarChartComponent />
                           </figure>
                           <figure className="box b">  
-                          <h1>PieChart</h1>
+                          
                             <PieChartComponent />
                           </figure>
                            <figure className="box c"> 
-                          <h1>LineChart</h1>
+                          
                             <LineChartComponent />
                           </figure>  
                           <figure className="box d">  
-                           <h1>Horizontal BarChart</h1>
+                           
                             <HorizontalBarChartComponent />
                           </figure> 
                       </section> 

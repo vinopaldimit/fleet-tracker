@@ -117,10 +117,10 @@ class App extends Component {
 
         return (
             <div className="App">
-                <button className="theme">Theme</button>
+                
                     <header>
                   
-                    <h1>Fleetrix</h1>
+                    <h1>CSP Dash</h1>
                     
                     </header>
                     
@@ -128,11 +128,6 @@ class App extends Component {
                     <nav>
 
                         <button className="dash" onClick={this.setDash}>Dashboard</button>
-                        <div className="menu" onclick="myFunction(this)">
-                         <div className="bar1"></div>
-                         <div className="bar2"></div>
-                         <div className="bar3"></div>
-                        </div>
 
                         <button className="trucks" onClick={this.setTrucks}>Trucks</button>
                         <button className="trips" onClick={this.setTrips}>Trips</button>

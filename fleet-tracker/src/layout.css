@@ -1,8 +1,8 @@
 
 /*Mobile First stuff*/
-@media screen and (min-width: 300px) {
+@media screen and (max-width: 300px) {
 	button {
-		width: 70%;
+		width: 15%;
 	}
 
 	.theme{
@@ -17,9 +17,9 @@
 	}
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (max-width: 750px) {
 	button {
-		width: 10.5%
+		width: 15%;
 	}
 	.theme{
 		width: 5%;

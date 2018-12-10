@@ -100,10 +100,14 @@ section{
   font-size: 150%;
 }
 
-.theme{
-	width: 5%;
-	background-color: var(--darkWhite);
-	color: var(--black);
+.chart {
+	max-width: 50vw;
+	margin: auto;
+}
+
+.chartDash {
+	max-width: 50vw;
+	margin: auto;
 }
 
 table{

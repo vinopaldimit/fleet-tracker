@@ -58,7 +58,9 @@ export default class BarChartComponent extends Component
  render()
    {
       return(
-        <div>
+        <div className="chart">
+        <h1>BarChart</h1>
+
           <Bar
             // height = {240}
             // width = {240}
