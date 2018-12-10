@@ -7,6 +7,8 @@ import FedExAssignments from './components/FedExAssignments';
 import Companies from './components/Companies';
 import Calculations from './components/Calculations';
 import Dashboard from './components/Dashboard';
+import Uploader from './components/Uploader';
+
 
 class App extends Component {
     constructor() {
@@ -160,6 +162,7 @@ class App extends Component {
                       ? <Calculations trips={this.state.trips} trucks={this.state.trucks}/>
                       : <h2></h2>}
                     </div>
+                    <Uploader />
                 </main>
 
             </div>
