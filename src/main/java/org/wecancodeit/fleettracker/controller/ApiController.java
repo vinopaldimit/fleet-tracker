@@ -1,9 +1,13 @@
 package org.wecancodeit.fleettracker.controller;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.wecancodeit.fleettracker.models.Company;
@@ -61,6 +65,41 @@ public class ApiController {
 	public Trip getTrip(@PathVariable(value = "id") Long id) {
 		return tripRepo.findById(id).get();
 
+	}
+
+	@PostMapping("/add/trips")
+	public Iterable<Trip> addTrip(@RequestBody String body) throws JSONException {
+		System.out.println(body);
+		JSONObject json = new JSONObject(body);
+		String date = json.getString("DATE");
+		int dateYear = Integer.parseInt(date.split("/")[2]);
+		int dateMonth = Integer.parseInt(date.split("/")[0]);
+		int dateDay = Integer.parseInt(date.split("-")[1]);
+		Long tripNumber = json.getLong("TRIP #");
+		Long origin = json.getLong("LEG ORG");
+		Long destination = json.getLong("LEG DEST");
+		Long zipCode = json.getLong("ZIP/POSTAL");
+		String milesQuantity = json.getString("MILES QTY");
+		String vMr = json.getString("VMR RATE");
+		String mileagePlus = json.getString("MILEAGE PLUS");
+		String premiums = json.getString("PREMIUMS");
+		String fuel = json.getString("FUEL");
+		String totalRate = json.getString("TOTAL RATE");
+		String aMt = json.getString("$ AMT");
+		Long packages = json.getLong("# PKGS");
+		Long packageAmt = json.getLong("$ AMT"); // Double $ AMT variables??
+		String dropAndHook = json.getString("D AND H");
+		String tolls = json.getString("TOLLS");
+		String flatRate = json.getString("FLAT RATE");
+		String dailyGrossAmount = json.getString("DAILY GROSS $ AMT");
+		String driverOne = json.getString("DRIVER #1");
+		String driverTwo = json.getString("DRIVER #2");
+		Truck truck = truckRepo.findById(Long.parseLong(json.getString("Truck"))).get();
+		tripRepo.save(new Trip(dateYear, dateMonth, dateDay, tripNumber, origin, destination, zipCode, milesQuantity,
+				vMr, mileagePlus, premiums, fuel, totalRate, aMt, packages, packageAmt, dropAndHook, tolls, flatRate,
+				dailyGrossAmount, driverOne, driverTwo, truck));
+
+		return tripRepo.findAll();
 	}
 
 	@GetMapping("/employees")

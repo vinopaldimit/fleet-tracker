@@ -22,14 +22,16 @@ class Uploader extends Component {
   }
 
   handleSubmit(event) {
-  	 	fetch('http://localhost:8080/trips/add', {
+  	 	fetch('http://localhost:8080/api/add/trips', {
       method: 'POST',
+      mode: 'no-cors',
       body: this.state.value,
     }).then((response) => {
+      // response.json()
       response.json().then((body) => {
        console.log(response)
       });
-    });
+    }).then(data => console.log(data));
     event.preventDefault();
   }
    
