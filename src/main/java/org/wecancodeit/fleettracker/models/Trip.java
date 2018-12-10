@@ -294,7 +294,7 @@ public class Trip {
 		
 		if(date.getDayOfMonth() + daysAdded >= monthLength) {
 			if(date.getMonthValue()==12) {
-				return LocalDate.of(date.getYear(), 1, (date.getDayOfMonth() + daysAdded) - monthLength);
+				return LocalDate.of(date.getYear() + 1, 1, (date.getDayOfMonth() + daysAdded) - monthLength);
 			}
 			return LocalDate.of(date.getYear(), date.getMonthValue() + 1, (date.getDayOfMonth() + daysAdded) - monthLength);
 		}

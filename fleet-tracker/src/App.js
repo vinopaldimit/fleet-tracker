@@ -5,14 +5,8 @@ import Employees from './components/Employees';
 import FuelPurchases from './components/FuelPurchases';
 import FedExAssignments from './components/FedExAssignments';
 import Companies from './components/Companies';
-
 import Calculations from './components/Calculations';
-
-
-import BarChartComponent from './components/BarChartComponent';
-import HorizontalBarChartComponent from './components/HorizontalBarChartComponent';
-import PieChartComponent from './components/PieChartComponent';
-import LineChartComponent from './components/LineChartComponent';
+import Dashboard from './components/Dashboard';
 
 class App extends Component {
     constructor() {
@@ -24,7 +18,7 @@ class App extends Component {
             fuelPurchases: [],
             fedExAssignments: [],
             companies: [],
-            currentView: ''
+            currentView: 'dash'
 
         }
     }
@@ -78,91 +72,13 @@ class App extends Component {
             })
     }
 
-    fetchAll() {
+    componentWillMount() {
         this.getTrucks()
         this.getTrips()
         this.getEmployees()
         this.getFuelPurchases()
         this.getFedExAssignments()
         this.getCompanies()
-    }
-
-    componentWillMount() {
-        this.fetchAll()
-    }
-
-    countTotalMiles = () => {
-        let miles = 0
-        this.state.trips.map(function(trip, index){
-            miles += trip.milesQuantity
-        })
-        return(miles)
-    }
-
-    countTotalAMT = () => {
-        let AMT = 0
-        this.state.trips.map(function(trip, index){
-            AMT += trip.aMt
-        })
-        return(AMT)
-    }
-
-    countTotalPackages = () => {
-        let packages = 0
-        this.state.trips.map(function(trip, index){
-            packages += trip.packages
-        })
-        return(packages)
-    }
-
-    countTotalPackageAmt = () => {
-        let packageAmt = 0
-        this.state.trips.map(function(trip, index){
-            packageAmt += trip.packageAmt
-        })
-        return(packageAmt)
-    }
-
-    countTotalDropAndHook = () => {
-        let dropAndHook = 0
-        this.state.trips.map(function(trip, index){
-            dropAndHook += trip.dropAndHook
-        })
-        return(dropAndHook)
-    }
-
-    countTotalTolls = () => {
-        let tolls = 0
-        this.state.trips.map(function(trip, index){
-            tolls += trip.tolls
-        })
-        return(tolls)
-    }
-
-    countTotalFlatRate = () => {
-        let flatRate = 0
-        this.state.trips.map(function(trip, index){
-            flatRate += trip.flatRate
-        })
-        return(flatRate)
-    }
-
-    countTotalDailyGrossAmount = () => {
-        let dailyGross = 0
-        this.state.trips.map(function(trip, index){
-            dailyGross += trip.dailyGrossAmount
-        })
-        return(dailyGross)
-    }
-
-    countUniqueTrucks = () => {
-        let truckList = []
-        this.state.trips.map(function(trip, index){
-            if(!truckList.includes(trip.truck.id)){
-                truckList.push(trip.truck.id)
-            }
-        })
-        return(truckList.length)
     }
 
     setTrucks = () => {
@@ -193,6 +109,10 @@ class App extends Component {
         this.setState({ currentView: 'calculations' })
     }
 
+    setDash = ( ) => {
+        this.setState({ currentView: 'dash' })
+    }
+
     render() {
 
         return (
@@ -206,6 +126,8 @@ class App extends Component {
                     
 
                     <nav>
+
+                        <button className="dash" onClick={this.setDash}>Dashboard</button>
                         <div className="menu" onclick="myFunction(this)">
                          <div className="bar1"></div>
                          <div className="bar2"></div>
@@ -223,7 +145,11 @@ class App extends Component {
                 
 
                 <main>
-                      {this.state.currentView === 'trucks'
+
+                    <div>
+                      {this.state.currentView === 'dash'
+                      ? <Dashboard />
+                      :this.state.currentView === 'trucks'
                       ? <Trucks trucks={this.state.trucks} />
                       : this.state.currentView === 'trips'
                       ? <Trips trips={this.state.trips} />
@@ -236,16 +162,9 @@ class App extends Component {
                       : this.state.currentView === 'companies'
                       ? <Companies companies={this.state.companies} />
                       : this.state.currentView === 'calculations'
-                      ? <Calculations countTotalMiles={this.countTotalMiles} 
-                        countTotalAMT={this.countTotalAMT} 
-                        countTotalPackages={this.countTotalPackages} 
-                        countTotalPackageAmt={this.countTotalPackageAmt}
-                        countTotalDropAndHook={this.countTotalDropAndHook}
-                        countTotalTolls={this.countTotalTolls}
-                        countTotalFlatRate={this.countTotalFlatRate}
-                        countTotalDailyGrossAmount={this.countTotalDailyGrossAmount}
-                        countUniqueTrucks={this.countUniqueTrucks}/>
+                      ? <Calculations trips={this.state.trips} trucks={this.state.trucks}/>
                       : <h2></h2>}
+                    </div>
                        <section className="wrapper">
                           <figure className="box a">
                           <h1>BarChart</h1>
