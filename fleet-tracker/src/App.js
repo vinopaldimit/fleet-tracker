@@ -117,20 +117,35 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header>
-                    <h1>Fleet Tracker</h1>
+                <button className="theme">Theme</button>
+                    <header>
+                  
+                    <h1>Fleetrix</h1>
+                    
+                    </header>
+                    
+
                     <nav>
+
                         <button className="dash" onClick={this.setDash}>Dashboard</button>
+                        <div className="menu" onclick="myFunction(this)">
+                         <div className="bar1"></div>
+                         <div className="bar2"></div>
+                         <div className="bar3"></div>
+                        </div>
+
                         <button className="trucks" onClick={this.setTrucks}>Trucks</button>
                         <button className="trips" onClick={this.setTrips}>Trips</button>
                         <button className="employees" onClick={this.setEmployees}>Employees</button>
                         <button className="fuelPurchases" onClick={this.setFuelPurchases}>Fuel Purchases</button>
-                        <button className="fedExAssignments" onClick={this.setFedExAssignments}>FedEx Assignments</button>
+                        <button className="fedExAssignments" onClick={this.setFedExAssignments}>Assignments</button>
                         <button className="companies" onClick={this.setCompanies}>Companies</button>
                         <button className="calculations" onClick={this.setCalculations}>Calculations</button>
                     </nav>
-                </header>
+                
+
                 <main>
+
                     <div>
                       {this.state.currentView === 'dash'
                       ? <Dashboard />
@@ -150,8 +165,28 @@ class App extends Component {
                       ? <Calculations trips={this.state.trips} trucks={this.state.trucks}/>
                       : <h2></h2>}
                     </div>
+                       <section className="wrapper">
+                          <figure className="box a">
+                          <h1>BarChart</h1>
+                            <BarChartComponent />
+                          </figure>
+                          <figure className="box b">  
+                          <h1>PieChart</h1>
+                            <PieChartComponent />
+                          </figure>
+                           <figure className="box c"> 
+                          <h1>LineChart</h1>
+                            <LineChartComponent />
+                          </figure>  
+                          <figure className="box d">  
+                           <h1>Horizontal BarChart</h1>
+                            <HorizontalBarChartComponent />
+                          </figure> 
+                      </section> 
                 </main>
+
             </div>
+
         );
     }
 }

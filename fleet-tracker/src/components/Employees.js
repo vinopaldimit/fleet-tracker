@@ -10,14 +10,44 @@ constructor (props) {
     render() {
         return (<div>
                 <h3>Employees</h3>
-                {this.props.employees.map((employee, index) =>
-                    <section key={index}>
-                        <h2>{employee.fName}</h2>
-                        <p>{employee.mName}</p>
-                        <p>{employee.lName}</p>
-                        <p>{employee.miles}</p>
-                    </section>
-                )}
+
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Miles</th>
+                        <th>SSN</th>
+                        <th>Fedex Id</th>
+                        <th>DOB</th>
+                        <th>Phone #</th>
+                        <th>Hire Date</th>
+                        <th>License #</th>
+                        <th>License State</th>
+                        <th>License Exp.</th>
+                        <th>DOT Physical Exp.</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                    </tr>
+
+                    {this.props.employees.map((employee, index) =>
+                        <tr key={index}>
+
+                            <td>{employee.lName}, {employee.fName} {employee.mName}</td>
+                            <td>{employee.miles}</td>
+                            <td>{employee.ssn}</td>
+                            <td>{employee.fedexId}</td>
+                            <td>{employee.dateOfBirth}</td>
+                            <td>{employee.phoneNumber}</td>
+                            <td>{employee.hireDate}</td>
+                            <td>{employee.licenseNumber}</td>
+                            <td>{employee.licenseState}</td>
+                            <td>{employee.licenseExp}</td>
+                            <td>{employee.dotPhysicalExp}</td>
+                            <td>{employee.address}</td>
+                            <td>{employee.email}</td>
+
+                        </tr>
+                    )}
+                </table>
             </div>);
     }
 }
