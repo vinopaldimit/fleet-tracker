@@ -55,8 +55,7 @@ h1{
 }
 
 h2{
-	font-family: 'Archivo Black', sans-serif;
-	/*font-family: "Merriweather", sans-serif;*/
+	font-family: "Merriweather", sans-serif;
 	text-decoration: underline var(--maroon);
 	margin-bottom: 5px;
 	color: var(--darkWhite);

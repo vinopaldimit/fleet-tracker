@@ -1,5 +1,7 @@
 package org.wecancodeit.fleettracker.controller;
 
+import java.util.Optional;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,10 +73,12 @@ public class ApiController {
 	public Iterable<Trip> addTrip(@RequestBody String body) throws JSONException {
 		System.out.println(body);
 		JSONObject json = new JSONObject(body);
+		
 		String date = json.getString("DATE");
-		int dateYear = Integer.parseInt(date.split("/")[2]);
-		int dateMonth = Integer.parseInt(date.split("/")[0]);
-		int dateDay = Integer.parseInt(date.split("-")[1]);
+		int dateYear = Integer.parseInt(date.split("-")[2]);
+		//make it recognize Nov as 11, etc.
+		int dateMonth = Integer.parseInt(date.split("-")[1]);
+		int dateDay = Integer.parseInt(date.split("-")[0]);
 		Long tripNumber = json.getLong("TRIP #");
 		Long origin = json.getLong("LEG ORG");
 		Long destination = json.getLong("LEG DEST");
@@ -87,14 +91,24 @@ public class ApiController {
 		String totalRate = json.getString("TOTAL RATE");
 		String aMt = json.getString("$ AMT");
 		Long packages = json.getLong("# PKGS");
-		Long packageAmt = json.getLong("$ AMT"); // Double $ AMT variables??
+		Long packageAmt = json.getLong("PKG $ AMT"); // Double $ AMT variables??
 		String dropAndHook = json.getString("D AND H");
 		String tolls = json.getString("TOLLS");
 		String flatRate = json.getString("FLAT RATE");
 		String dailyGrossAmount = json.getString("DAILY GROSS $ AMT");
 		String driverOne = json.getString("DRIVER #1");
 		String driverTwo = json.getString("DRIVER #2");
-		Truck truck = truckRepo.findById(Long.parseLong(json.getString("Truck"))).get();
+		
+		Optional<Truck> optionalTruck = truckRepo.findByTruckNumber(json.getString("TRUCK"));
+		Truck truck;
+		
+		if(optionalTruck.isPresent()) {
+			truck = optionalTruck.get();
+		} else {
+			//fix this
+			throw new Error("not a truck!!!!!!");
+		}
+		
 		tripRepo.save(new Trip(dateYear, dateMonth, dateDay, tripNumber, origin, destination, zipCode, milesQuantity,
 				vMr, mileagePlus, premiums, fuel, totalRate, aMt, packages, packageAmt, dropAndHook, tolls, flatRate,
 				dailyGrossAmount, driverOne, driverTwo, truck));
