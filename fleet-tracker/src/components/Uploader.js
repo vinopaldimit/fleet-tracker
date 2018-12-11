@@ -10,42 +10,46 @@ class Uploader extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  setDataValue = ( results ) => {
+    this.setState({value: results})
+  }
+
   handleChange(event) {
-  	console.log(event.target.files[0]);
-    	Papa.parse(event.target.files[0], {
-    header: true,		
-	complete: function(results) {
-		console.log("Finished:", results.data);
-	}
-});
-    this.setState({value: event.target.value});
+    const that = this
+    Papa.parse(event.target.files[0], {
+      header: true,
+      complete: function(results) {
+        that.setDataValue(results.data)
+        console.log("Finished:", results.data)
+      }
+    })
   }
 
   handleSubmit(event) {
-  	 	fetch('http://localhost:8080/api/add/trips', {
+
+  	fetch('http://localhost:8080/api/add/trips', {
       method: 'POST',
       mode: 'no-cors',
-      body: this.state.value,
+      body: JSON.stringify(this.state.value[0]),
     }).then((response) => {
-      // response.json()
-      response.json().then((body) => {
-       console.log(response)
-      });
+      console.log(this.state.value[0])
+      console.log(response)
+      return response.text()
     }).then(data => console.log(data));
     event.preventDefault();
   }
    
-    render() {
-        return (
-<form onSubmit={this.handleSubmit}>
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="file" value={this.state.value} onChange={this.handleChange} />
+          <input type="file" onChange={this.handleChange}  />
         </label>
         <input type="submit" value="Submit" />
       </form>
-        );
-    }
+    )
+  }
 }
 
 export default Uploader;
