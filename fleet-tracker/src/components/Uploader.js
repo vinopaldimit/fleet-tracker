@@ -26,17 +26,18 @@ class Uploader extends Component {
   }
 
   handleSubmit(event) {
-
-  	fetch('http://localhost:8080/api/add/trips', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(this.state.value[0]),
-    }).then((response) => {
-      console.log(this.state.value[0])
-      console.log(response)
-      return response.text()
-    }).then(data => console.log(data));
-    event.preventDefault();
+    this.state.value.map(function(trip, index){
+        fetch('http://localhost:8080/api/add/trips', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify(trip),
+        }).then((response) => {
+          console.log(trip)
+          console.log(response)
+          return response.text()
+        }).then(data => console.log(data));
+        event.preventDefault();
+    })
   }
    
   render() {

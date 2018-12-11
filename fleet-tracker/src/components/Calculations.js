@@ -5,7 +5,8 @@ class Calculations extends Component {
 constructor (props) {
     super(props);
     this.state = {
-        value: this.props.trucks[0].id,
+        truck: this.props.trucks[0].id,
+        month: '1'
     }
 }
 
@@ -85,9 +86,11 @@ constructor (props) {
 
     countTruckMiles = () => {
         let miles = 0
-        const truckId = this.state.value
+        const truckId = this.state.truck
+        const month = this.state.month
+
         this.props.trips.map(function(trip, index){
-            if(trip.truck.id==truckId){
+            if(trip.truck.id==truckId&&trip.weekEnding.split("-")[1]==month){
                 miles += trip.milesQuantity
             }
         })
@@ -95,7 +98,11 @@ constructor (props) {
     }
 
     handleTruckChange = (event) => {
-        this.setState({ value: event.target.value });
+        this.setState({ truck: event.target.value });
+    }
+
+    handleMonthChange = (event) => {
+        this.setState({ month: event.target.value });
     }
 
     render() {
@@ -124,6 +131,20 @@ constructor (props) {
                         {this.props.trucks.map((truck) => {
                             return <option key={truck.id} value={truck.id}>{truck.truckNumber}</option>
                         })}
+                    </select></label>
+                    <label>Select Month: <select onChange={this.handleMonthChange} value={value} >
+                        <option value='1'>January</option>
+                        <option value='2'>February</option>
+                        <option value='3'>March</option>
+                        <option value='4'>April</option>
+                        <option value='5'>May</option>
+                        <option value='6'>June</option>
+                        <option value='7'>July</option>
+                        <option value='8'>August</option>
+                        <option value='9'>September</option>
+                        <option value='10'>October</option>
+                        <option value='11'>November</option>
+                        <option value='12'>December</option>
                     </select></label>
                     <p>Truck miles: {this.countTruckMiles()}</p>
                 </section>

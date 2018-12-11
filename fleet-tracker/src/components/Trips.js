@@ -34,6 +34,7 @@ constructor (props) {
                         <th>Daily Gross AMT</th>
                         <th>Driver One</th>
                         <th>Driver Two</th>
+                        <th>Week Ending</th>
                     </tr>
 
                 {this.props.trips.map((trip, index) =>
@@ -59,6 +60,7 @@ constructor (props) {
                         <td>{trip.dailyGrossAmount}</td>
                         <td>{trip.driverOne}</td>
                         <td>{trip.driverTwo}</td>
+                        <td>{trip.weekEnding}</td>
                     </tr>
 
                 )}

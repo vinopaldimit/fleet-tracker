@@ -130,7 +130,7 @@ public class Trip {
 			String dailyGrossAmount, String driverOne, String driverTwo, Truck truck) {
 
 		this.tripNumber = tripNumber;
-		this.date = LocalDate.of(dateYear, dateMonth, dateDay);
+		this.date = LocalDate.of(dateYear + 2000, dateMonth, dateDay);
 		this.weekEnding = calculateWeekEnding(this.date);
 		this.origin = origin;
 		this.destination = destination;
@@ -292,7 +292,7 @@ public class Trip {
 		
 		int monthLength = date.getMonth().length(date.isLeapYear());
 		
-		if(date.getDayOfMonth() + daysAdded >= monthLength) {
+		if(date.getDayOfMonth() + daysAdded > monthLength) {
 			if(date.getMonthValue()==12) {
 				return LocalDate.of(date.getYear() + 1, 1, (date.getDayOfMonth() + daysAdded) - monthLength);
 			}
