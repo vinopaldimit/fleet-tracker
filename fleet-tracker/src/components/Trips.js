@@ -4,6 +4,7 @@ class Trips extends Component {
 
 constructor (props) {
     super(props);
+    
 }
 
 

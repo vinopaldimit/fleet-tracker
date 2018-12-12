@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     getCompanies() {
-        fetch('http://localhost:8080/api/companies').then(res => res.json())
+        fetch('/api/companies').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ companies: data })
@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     getFedExAssignments() {
-        fetch('http://localhost:8080/api/fedexassignments').then(res => res.json())
+        fetch('/api/fedexassignments').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ fedExAssignments: data })
@@ -43,7 +43,7 @@ class App extends Component {
 
 
     getFuelPurchases() {
-        fetch('http://localhost:8080/api/fuelpurchases').then(res => res.json())
+        fetch('/api/fuelpurchases').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ fuelPurchases: data })
@@ -51,7 +51,7 @@ class App extends Component {
     }
 
     getEmployees() {
-        fetch('http://localhost:8080/api/employees').then(res => res.json())
+        fetch('/api/employees').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ employees: data })
@@ -59,7 +59,7 @@ class App extends Component {
     }
 
     getTrucks() {
-        fetch('http://localhost:8080/api/trucks').then(res => res.json())
+        fetch('/api/trucks').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ trucks: data })
@@ -67,7 +67,7 @@ class App extends Component {
     }
 
     getTrips() {
-        fetch('http://localhost:8080/api/trips').then(res => res.json())
+        fetch('/api/trips').then(res => res.json())
             .then(data => {
                 console.log(data);
                 this.setState({ trips: data })
@@ -115,6 +115,15 @@ class App extends Component {
         this.setState({ currentView: 'dash' })
     }
 
+    setStateTrips = (data) => {
+        this.setState({ trips: data})
+    }
+
+     setUpload = ( ) => {
+        this.setState({ currentView: 'upload' })
+    }
+
+
     render() {
 
         return (
@@ -138,6 +147,7 @@ class App extends Component {
                         <button className="fedExAssignments" onClick={this.setFedExAssignments}>Assignments</button>
                         <button className="companies" onClick={this.setCompanies}>Companies</button>
                         <button className="calculations" onClick={this.setCalculations}>Calculations</button>
+                        <button className="upLoad" onClick={this.setUpload}>Upload A File</button>
                     </nav>
                 
 
@@ -160,9 +170,12 @@ class App extends Component {
                       ? <Companies companies={this.state.companies} />
                       : this.state.currentView === 'calculations'
                       ? <Calculations trips={this.state.trips} trucks={this.state.trucks}/>
+                      : this.state.currentView === 'upload'
+                      ? <Uploader setStateTrips={this.setStateTrips}/>
+
                       : <h2></h2>}
                     </div>
-                    <Uploader />
+                    
                 </main>
 
             </div>

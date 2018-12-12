@@ -14,7 +14,7 @@ export default class BarChartComponent extends Component
     }
        
       componentDidMount() {
-        fetch('http://localhost:8080/api/trucks')
+        fetch('/api/trucks')
           .then(res => res.json())
           .then(data => {
             const trucks = data;

@@ -26,29 +26,30 @@ class Uploader extends Component {
   }
 
   handleSubmit(event) {
-    this.state.value.map(function(trip, index){
-        fetch('http://localhost:8080/api/add/trips', {
+    const that = this
+    return this.state.value.map(function(trip, index){
+        fetch('/api/add/trips', {
           method: 'POST',
           mode: 'no-cors',
           body: JSON.stringify(trip),
         }).then((response) => {
           console.log(trip)
           console.log(response)
-          return response.text()
-        }).then(data => console.log(data));
-        event.preventDefault();
+          return response.json()
+        }).then(data => that.props.setStateTrips(data));
+        // event.preventDefault();
     })
   }
    
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <section>
         <label>
           Name:
           <input type="file" onChange={this.handleChange}  />
         </label>
-        <input type="submit" value="Submit" />
-      </form>
+        <button onClick={this.handleSubmit}>Submit</button>
+      </section>
     )
   }
 }

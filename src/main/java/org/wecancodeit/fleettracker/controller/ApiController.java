@@ -1,5 +1,6 @@
 package org.wecancodeit.fleettracker.controller;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.json.JSONException;
@@ -70,13 +71,13 @@ public class ApiController {
 	}
 
 	@PostMapping("/add/trips")
-	public Iterable<Trip> addTrip(@RequestBody String body) throws JSONException {
+	public Collection<Trip> addTrip(@RequestBody String body) throws JSONException {
 		System.out.println(body);
 		JSONObject json = new JSONObject(body);
-		
+
 		String date = json.getString("DATE");
 		int dateYear = Integer.parseInt(date.split("-")[2]);
-		//make it recognize Nov as 11, etc.
+		// make it recognize Nov as 11, etc.
 		int dateMonth = Integer.parseInt(date.split("-")[1]);
 		int dateDay = Integer.parseInt(date.split("-")[0]);
 		Long tripNumber = json.getLong("TRIP #");
@@ -98,22 +99,22 @@ public class ApiController {
 		String dailyGrossAmount = json.getString("DAILY GROSS $ AMT");
 		String driverOne = json.getString("DRIVER #1");
 		String driverTwo = json.getString("DRIVER #2");
-		
+
 		Optional<Truck> optionalTruck = truckRepo.findByTruckNumber(json.getString("TRUCK"));
 		Truck truck;
-		
-		if(optionalTruck.isPresent()) {
+
+		if (optionalTruck.isPresent()) {
 			truck = optionalTruck.get();
 		} else {
-			//fix this
+			// fix this
 			throw new Error("not a truck!!!!!!");
 		}
-		
+
 		tripRepo.save(new Trip(dateYear, dateMonth, dateDay, tripNumber, origin, destination, zipCode, milesQuantity,
 				vMr, mileagePlus, premiums, fuel, totalRate, aMt, packages, packageAmt, dropAndHook, tolls, flatRate,
 				dailyGrossAmount, driverOne, driverTwo, truck));
-
-		return tripRepo.findAll();
+		System.out.println(tripRepo.findAll());
+		return (Collection<Trip>) tripRepo.findAll();
 	}
 
 	@GetMapping("/employees")
