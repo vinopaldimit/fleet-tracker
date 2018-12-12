@@ -47,18 +47,18 @@ constructor (props) {
                         <td>{trip.destination}</td>
                         <td>{trip.zipCode}</td>
                         <td>{trip.milesQuantity}</td>
-                        <td>{trip.vMr}</td>
-                        <td>{trip.mileagePlus}</td>
-                        <td>{trip.premiums}</td>
-                        <td>{trip.fuel}</td>
-                        <td>{trip.totalRate}</td>
-                        <td>{trip.aMt}</td>
+                        <td>${trip.vMr}</td>
+                        <td>${trip.mileagePlus}</td>
+                        <td>${trip.premiums}</td>
+                        <td>${trip.fuel}</td>
+                        <td>${trip.totalRate}</td>
+                        <td>${trip.aMt}</td>
                         <td>{trip.packages}</td>
-                        <td>{trip.packageAmt}</td>
-                        <td>{trip.dropAndHook}</td>
-                        <td>{trip.tolls}</td>
-                        <td>{trip.flatRate}</td>
-                        <td>{trip.dailyGrossAmount}</td>
+                        <td>${trip.packageAmt}</td>
+                        <td>${trip.dropAndHook}</td>
+                        <td>${trip.tolls}</td>
+                        <td>${trip.flatRate}</td>
+                        <td>${trip.dailyGrossAmount}</td>
                         <td>{trip.driverOne}</td>
                         <td>{trip.driverTwo}</td>
                         <td>{trip.weekEnding}</td>
