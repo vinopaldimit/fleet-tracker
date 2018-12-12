@@ -8,6 +8,7 @@ import Companies from './components/Companies';
 import Calculations from './components/Calculations';
 import Dashboard from './components/Dashboard';
 import Uploader from './components/Uploader';
+import logo from './cspdashlogo.png';
 
 
 class App extends Component {
@@ -131,7 +132,9 @@ class App extends Component {
                 
                     <header>
                   
-                    <h1>CSP Dash</h1>
+                    <figure>
+                        <img className="logo" src={logo}/>
+                    </figure>
                     
                     </header>
                     

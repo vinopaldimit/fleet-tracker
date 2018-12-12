@@ -5,17 +5,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #333333;
+    background-color: #3c3d3b;
 }
 
 :root {
-	--maroon: #4d0000;
+	--mint: #d8ff9e;
 	--orange:  #FF750D;
 	--redOrange: #E83B0C;
 	--red: #FF0000;
 	--pink: #E80CAF;
 	--purple: #BC00FF;
 	--darkWhite : #d9d9d9;
+	--buttonText: d8ff9e;
 	--black : #1a1a1a;
 }
 
@@ -28,14 +29,14 @@ body {
 }
 
 button{
-	background-color: var(--maroon) ;  
+	background-color: var(--mint) ;  
 	border: solid 2px;
 	padding: 5px 15px;
 	margin: 3rem;
 	font-size: 1rem;
 	border-radius: 20px;
 	border-color: var(--black);
-	color: var(--darkWhite);
+	color: var(--buttonText);
 }
 
 button:hover{
@@ -46,7 +47,7 @@ button:hover{
 h1{
 	font-family: "Montserrat", sans-serif;
 	text-align: center;
-	/*text-shadow: 3px 1px var(--maroon);*/
+	/*text-shadow: 3px 1px var(--mint);*/
 	margin-top: 5px;
 	margin-bottom: 5px;
 	color: var(--darkWhite);
@@ -56,7 +57,7 @@ h1{
 
 h2{
 	font-family: "Merriweather", sans-serif;
-	text-decoration: underline var(--maroon);
+	text-decoration: underline var(--mint);
 	margin-bottom: 5px;
 	color: var(--darkWhite);
 
@@ -73,6 +74,15 @@ h3{
 h4{
 	color: white;
 	text-align: center;
+}
+
+.logo {
+	display:flex;
+	width: 30vw;
+	padding: .5rem;
+	margin-left: auto;
+	margin-right: auto;
+
 }
 
 nav{
