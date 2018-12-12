@@ -5,8 +5,9 @@ class Calculations extends Component {
 constructor (props) {
     super(props);
     this.state = {
-        truck: this.props.trucks[0].id,
-        month: '1'
+        truck: 'all',
+        month: 'all',
+        year: 'all'
     }
 }
 
@@ -88,9 +89,10 @@ constructor (props) {
         let miles = 0
         const truckId = this.state.truck
         const month = this.state.month
+        const year = this.state.year
 
         this.props.trips.map(function(trip, index){
-            if(trip.truck.id==truckId&&trip.weekEnding.split("-")[1]==month){
+            if((trip.truck.id==truckId||truckId=='all')&&(trip.weekEnding.split("-")[1]==month||month=='all')&&(trip.weekEnding.split("-")[0]==year||year=='all')){
                 miles += trip.milesQuantity
             }
         })
@@ -103,6 +105,10 @@ constructor (props) {
 
     handleMonthChange = (event) => {
         this.setState({ month: event.target.value });
+    }
+
+    handleYearChange = (event) => {
+        this.setState({ year: event.target.value });
     }
 
     render() {
@@ -126,13 +132,15 @@ constructor (props) {
                     <p>Average miles per truck: {this.countTotalMiles() / this.countUniqueTrucks()}</p>
                 </section>
                 <section>
-                    <h2>By Truck</h2>
+                    <h2>Mileage Calculations</h2>
                     <label>Select Truck: <select onChange={this.handleTruckChange} value={value} >
+                        <option value='all'>All</option>    
                         {this.props.trucks.map((truck) => {
                             return <option key={truck.id} value={truck.id}>{truck.truckNumber}</option>
                         })}
                     </select></label>
                     <label>Select Month: <select onChange={this.handleMonthChange} value={value} >
+                        <option value='all'>All</option>
                         <option value='01'>January</option>
                         <option value='02'>February</option>
                         <option value='03'>March</option>
@@ -145,6 +153,13 @@ constructor (props) {
                         <option value='10'>October</option>
                         <option value='11'>November</option>
                         <option value='12'>December</option>
+                    </select></label>
+
+                    <label>Select Year: <select onChange={this.handleYearChange} value={value} >
+                        <option value='all'>All</option>
+                        <option value='2017'>2017</option>
+                        <option value='2018'>2018</option>
+                        
                     </select></label>
                     <p>Truck miles: {this.countTruckMiles()}</p>
                 </section>
