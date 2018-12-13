@@ -130,15 +130,7 @@ class App extends Component {
         return (
             <div className="App">
                 
-                    <header>
-                  
-                    <figure>
-                        <img className="logo" src={logo}/>
-                    </figure>
-                    
-                    </header>
-                    
-
+                <header>
                     <nav>
 
                         <button className="dash" onClick={this.setDash}>Dashboard</button>
@@ -152,7 +144,10 @@ class App extends Component {
                         <button className="calculations" onClick={this.setCalculations}>Calculations</button>
                         <button className="upLoad" onClick={this.setUpload}>Upload A File</button>
                     </nav>
-                
+                    <figure>
+                        <img className="logo" src={logo}/>
+                    </figure>
+                </header>
 
                 <main>
 

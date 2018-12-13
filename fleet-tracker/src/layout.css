@@ -1,27 +1,17 @@
-
-/*Mobile First stuff*/
-@media screen and (max-width: 300px) {
-	button {
-		width: 15%;
-	}
-
-	.theme{
-		width: 25%;
-
-	}
-
-	.clearfix::after {
-		clear: both;
-		content: '';
-		display: block;
-	}
+.logo {
+	display:flex;
 }
 
-@media screen and (max-width: 750px) {
-	button {
-		width: 15%;
-	}
-	.theme{
-		width: 5%;
-	}
+.uploader{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (min-width: 300px) {
+	
+}
+
+@media screen and (min-width: 750px) {
+	
 }

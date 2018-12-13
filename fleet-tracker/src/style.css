@@ -10,13 +10,7 @@
 
 :root {
 	--mint: #d8ff9e;
-	--orange:  #FF750D;
-	--redOrange: #E83B0C;
-	--red: #FF0000;
-	--pink: #E80CAF;
-	--purple: #BC00FF;
 	--darkWhite : #d9d9d9;
-	--buttonText: d8ff9e;
 	--black : #1a1a1a;
 }
 
@@ -24,35 +18,26 @@
 body {
 	width: 90%;
 	margin: auto;
-  /*margin: 40px;
-  box-sizing: border-box;*/
 }
 
 button{
 	background-color: var(--mint) ;  
 	border: solid 2px;
 	padding: 5px 15px;
-	margin: 3rem;
+	margin: 1rem;
 	font-size: 1rem;
-	border-radius: 20px;
+	min-width: 7rem;
 	border-color: var(--black);
-	color: var(--buttonText);
 }
 
 button:hover{
-	border-color: white;
-	color: var(--darkWhite);
+	background-color: var(--black);
+	color: var(--mint);
+	border-color: var(--mint);
 }
 
-h1{
-	font-family: "Montserrat", sans-serif;
-	text-align: center;
-	/*text-shadow: 3px 1px var(--mint);*/
-	margin-top: 5px;
-	margin-bottom: 5px;
-	color: var(--darkWhite);
-	font-size: 2.5rem;
-	/*background-color: var(--darkWhite);*/
+nav{
+	margin-top: 1rem;
 }
 
 h2{
@@ -65,24 +50,10 @@ h2{
 
 h3{
 	font-family: "Merriweather", sans-serif;
-	margin: 10px 0 0 0;
+	margin: 3rem 0 0 0;
 	text-align: center;
 	color: white;
 	font-size: 1.5rem;
-}
-
-h4{
-	color: white;
-	text-align: center;
-}
-
-.logo {
-	display:flex;
-	width: 30vw;
-	padding: .5rem;
-	margin-left: auto;
-	margin-right: auto;
-
 }
 
 nav{
@@ -94,14 +65,37 @@ p{
 }
 
 section{
-	border: solid var(--darkWhite);
+	border: solid var(--mint);
 	margin: 1rem 0;
-	/*padding: 1rem;
-	border-radius: 17px;*/
+	padding: 1rem;
+	color: var(--darkWhite);
+}
+
+select, option{
+	color: var(--darkWhite);
+}
+
+table{
+	border: solid var(--mint);
+	color: white;
+	text-align: left;
+	width: 100%;
+	margin: 1rem 0;
+	padding: 1rem;
+}
+
+.uploader button{
+	margin: 0;
+}
+
+.logo {
+	width: 30vw;
+	padding: .5rem;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .box {
-  
   background-color: #444;
   color: #fff;
   border-radius: 5px;
@@ -117,11 +111,4 @@ section{
 .chartDash {
 	max-width: 50vw;
 	margin: auto;
-}
-
-table{
-	border: solid var(--darkWhite);
-	color: white;
-	text-align: left;
-	width: 100%;
 }
