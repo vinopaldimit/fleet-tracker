@@ -12,22 +12,24 @@ constructor (props) {
                 <h3>Employees</h3>
 
                 <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Miles</th>
-                        <th>SSN</th>
-                        <th>Fedex Id</th>
-                        <th>DOB</th>
-                        <th>Phone #</th>
-                        <th>Hire Date</th>
-                        <th>License #</th>
-                        <th>License State</th>
-                        <th>License Exp.</th>
-                        <th>DOT Physical Exp.</th>
-                        <th>Address</th>
-                        <th>Email</th>
-                    </tr>
-
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Miles</th>
+                            <th>SSN</th>
+                            <th>Fedex Id</th>
+                            <th>DOB</th>
+                            <th>Phone #</th>
+                            <th>Hire Date</th>
+                            <th>License #</th>
+                            <th>License State</th>
+                            <th>License Exp.</th>
+                            <th>DOT Physical Exp.</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {this.props.employees.map((employee, index) =>
                         <tr key={index}>
 
@@ -47,6 +49,7 @@ constructor (props) {
 
                         </tr>
                     )}
+                    </tbody>
                 </table>
             </div>);
     }

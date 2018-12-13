@@ -43,11 +43,10 @@ class Uploader extends Component {
    
   render() {
     return (
-      <section>
-        <label>
-          Name:
+      <section className="uploader">
+        
           <input type="file" onChange={this.handleChange}  />
-        </label>
+        
         <button onClick={this.handleSubmit}>Submit</button>
       </section>
     )
