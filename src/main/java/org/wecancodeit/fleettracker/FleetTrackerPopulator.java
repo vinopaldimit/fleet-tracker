@@ -57,10 +57,10 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		Employee( miles,  ssn,  fedexId,  dateOfBirth,  phoneNumber,  hireDate, sixtyDays,  licenseNumber,  licenseState,  licenseExp,  dotPhysicalExp, address,  email,  soloPayrate,  teamPayrate,  trainerPayrate, studentPayrate)
 
 		createEmployeeList(new Employee[] {
-				new Employee("John", "Peter", "Doe", "875000", "270-55-5555", "7020234", 1922, 10, 28, "614-666-6666",
-						2016, 10, 1, "RU636222", "Ohio", 2020, 10, 28, 2019, 10, 1, "420 Paper Street",
+				new Employee("John", "Peter", "Doe", "875000", "270-55-5555", "7020234", 1922, 10, 28, "614-555-5555",
+						2016, 10, 1, "RU636222", "Ohio", 2020, 10, 28, 2019, 10, 1, "1234 Paper Street",
 						"horseFan@ghosts.pizza", "0.56", "0.60", "0.65", "0.40"),
-				new Employee("Doug", "", "Hamsammich", "9925000", "310-55-5555", "702333", 1991, 1, 1, "614-666-6666",
+				new Employee("Doug", "", "Hamsammich", "9925000", "310-55-5555", "702333", 1991, 1, 1, "614-555-5555",
 						2016, 10, 1, "RU636222", "Ohio", 2020, 10, 28, 2019, 5, 4,
 						"1640 Riverside Drive, Hill Valley, California", "PeterBuiltGuy@trucker.net", "0.56", "0.60",
 						"0.65", "0.40") }).forEach(this::saveEmployeeToRepo);
@@ -68,12 +68,12 @@ public class FleetTrackerPopulator implements CommandLineRunner {
 //		FedExAssignment(Company , Truck , Float , Float ,Long )
 //		FedExAssignment( company,  truck,  servicePercentage,  availabilityPercentage, points)
 
-		Truck truckOne = new Truck("123", "500000.5492", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123",
+		Truck truckOne = new Truck("123", "500002", "Freightliner", "Cascadia", "2019", "3AKJHJL12345", "EFP123",
 				"Rialto", "400000", "50000", 2018, 5, 4);
-		Truck truckTwo = new Truck("321", "666666", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456",
+		Truck truckTwo = new Truck("321", "331234", "Freightliner", "Cascadia", "2012", "6ASS5JL12345", "EFP456",
 				"Rialto", "300000", "55000", 2018, 7, 8);
 		createTruckList(new Truck[] { truckOne, truckTwo,
-				new Truck("456", "420420", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", "400000",
+				new Truck("456", "867123", "International", "LT", "2016", "ASDFGHJKL345", "EFP789", "Rialto", "400000",
 						"45000", 2018, 6, 12),
 				new Truck("654", "123456", "Freightliner", "Cascadia", "2012", "6ASS5JL99945", "EFP987", "Rialto",
 						"300000", "55000", 2018, 9, 20) }).forEach(this::saveTruckToRepo);
