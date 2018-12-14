@@ -58,12 +58,14 @@ export default class LineChartComponent extends Component
              
               data: {
                 labels: truckNumber,
+                fontColor:'#fff',
                 datasets:[
                    {  
 
                       label:'Revenue',
                       data:truckRevenue ,
                       fill: true,
+                      fontColor:'#fff',
                       borderDash: [5, 5],
                       backgroundColor:
                        'rgb(216,255,158)',
@@ -73,6 +75,7 @@ export default class LineChartComponent extends Component
                      
                       label:'Miles',
                       data:truckMileage ,
+                      fontColor:'#fff',
                       fill: true,
                       borderDash: [5, 5],
                       backgroundColor:
@@ -95,9 +98,11 @@ export default class LineChartComponent extends Component
             // width = {240}
             data = {this.state.data}
             options = {{ title:{
+              scaleFontColor:'#fff',
           display:true,
-          text:'Week-Ending Revenue By Truck',
-          fontSize:25
+          text:'Track Revenue And Miles',
+          fontSize:25,
+          fontColor:'#fff'
         },
         legend:{
           display:true,
@@ -108,7 +113,7 @@ export default class LineChartComponent extends Component
         },
         layout:{
           padding:{
-            left:50,
+            left:20,
             right:0,
             bottom:0,
             top:0
@@ -123,9 +128,11 @@ export default class LineChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Week-Ending Revenue'
+            labelString: 'Truck Numbers',
+            fontColor:'#fff'
           },
           ticks: {
+            fontColor:'#fff',
             major: {
               fontStyle: 'bold',
               fontColor: '#FF0000'
@@ -136,12 +143,23 @@ export default class LineChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Truck Numbers'
-          }
-        } ]
-      }
-         }
-       } />
+            labelString: 'Revenue and Miles',
+            fontColor:'#fff'
+          },
+          ticks: {
+            beginAtZero:true,
+            fontColor:'#fff',
+            major: {
+              fontStyle: 'bold',
+              fontColor: '#FF0000'
+            }
+        }
+      }]
+         
+       }
+     } 
+   }
+   />
         </div>
       )
    }

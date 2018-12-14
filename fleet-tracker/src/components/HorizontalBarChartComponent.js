@@ -54,9 +54,11 @@ export default class HorizontalBarChartComponent extends Component
             that.setState({ 
               data: {
                 labels: truckNumber,
+                 fontColor:'#fff',
                 datasets:[
                    {
                       label:'Trucks',
+                       fontColor:'#fff',
                       data:truckRevenue ,
                       backgroundColor:[
                        'rgb(216,255,158)',
@@ -93,18 +95,19 @@ export default class HorizontalBarChartComponent extends Component
             options = {{ title:{
           display:true,
           text:'Week-Ending Revenue By Truck',
-          fontSize:25
+          fontSize:25,
+           fontColor:'#fff'
         },
         legend:{
           display:false,
           position:'right',
           labels:{
-            fontColor:'#000'
+            fontColor:'#fff'
           }
         },
         layout:{
           padding:{
-            left:50,
+            left:20,
             right:0,
             bottom:0,
             top:0
@@ -119,12 +122,14 @@ export default class HorizontalBarChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Week-Ending Revenue'
+            labelString: 'Week-Ending Revenue',
+             fontColor:'#fff'
           },
           ticks: {
+            fontColor: '#FFF',
             major: {
               fontStyle: 'bold',
-              fontColor: '#FF0000'
+              fontColor: '#FFF'
             }
           }
         } ],
@@ -132,7 +137,15 @@ export default class HorizontalBarChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Truck Numbers'
+            labelString: 'Truck Numbers',
+            fontColor: '#FFF'
+          },
+           ticks: {
+            fontColor: '#FFF',
+            major: {
+              fontStyle: 'bold',
+              fontColor: '#FFF'
+            }
           }
         } ]
       }

@@ -68,18 +68,19 @@ export default class PolarChartComponent extends Component
             options = {{ title:{
           display:true,
           text:'Compare Truck Mileage',
-          fontSize:25
+          fontSize:25,
+          fontColor:'#fff'
         },
         legend:{
           display:true,
           position:'right',
           labels:{
-            fontColor:'#000'
+            fontColor:'#fff'
           }
         },
         layout:{
           padding:{
-            left:50,
+            left:20,
             right:0,
             bottom:0,
             top:0
