@@ -68,18 +68,19 @@ export default class BarChartComponent extends Component
             options = {{ title:{
           display:true,
           text:'Miles By Truck',
-          fontSize:25
+          fontSize:25,
+          fontColor:'#fff'
         },
         legend:{
           display:false,
           position:'right',
           labels:{
-            fontColor:'#000'
+            fontColor:'#fff'
           }
         },
         layout:{
           padding:{
-            left:50,
+            left:20,
             right:0,
             bottom:0,
             top:0
@@ -94,12 +95,14 @@ export default class BarChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Truck Number'
+            labelString: 'Truck Number',
+             fontColor: '#FFF'
           },
           ticks: {
+             fontColor: '#FFF',
             major: {
               fontStyle: 'bold',
-              fontColor: '#FF0000'
+              fontColor: '#FFF'
             }
           }
         } ],
@@ -107,7 +110,15 @@ export default class BarChartComponent extends Component
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Miles'
+            labelString: 'Miles',
+            fontColor:'#fff'
+          },
+          ticks: {
+             fontColor: '#FFF',
+            major: {
+              fontStyle: 'bold',
+              fontColor: '#FFF'
+            }
           }
         } ]
       }
