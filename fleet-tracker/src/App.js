@@ -158,7 +158,7 @@ class App extends Component {
 
                     <div>
                       {this.state.currentView === 'dash'
-                      ? <Dashboard />
+                      ? <Dashboard  trips={this.state.trips}  />
                       :this.state.currentView === 'trucks'
                       ? <Trucks trucks={this.state.trucks} />
                       : this.state.currentView === 'trips'
